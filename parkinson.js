@@ -1,9 +1,23 @@
+
 const buttonSend = document.getElementById("button_send");
-buttonSend.addEventListener("click", checkInput);
+buttonSend.addEventListener("click", onEvaluate);//checkInput);
 const buttonStatusLabel = document.getElementById("button_status_text")
 var questionnaire = {}
+/* const rulesFile = fetch('rules.json')
+    .then((res) => res.text())
+    then((text) => {
+        JSON.parse(text);
+    })
+    . catch(e => (console.error(e)));
+    */
+//const rules = JSON.parse(fs.readFileSync('rules.json', 'utf8'));
 
 
+function onEvaluate(){
+    if(checkInput()){
+    }
+    calculateRecommendation();
+}
 
 function checkInput(){
     var allInputsGiven = true;
@@ -22,30 +36,17 @@ function checkInput(){
         }
     });    
     
-    //textfelder für Symptome wenn notwendig
-    if("parkinson_symptome_aktuell" in questionnaire & questionnaire["parkinson_symptome_aktuell"]){
-            const symptomeAktuell = document.getElementById("parkinson_smyptome_aktuell_text")
-            if(!symptomeAktuell.value){
-
+    //checkboxen für Symptome wenn notwendig
+    if(("parkinson_symptome_aktuell" in questionnaire && questionnaire["parkinson_symptome_aktuell"] )|| ("symptome_nach_medikamente_vorhanden" in questionnaire && questionnaire["symptome_nach_medikamente_vorhanden"])){
+            const symptomeAktuell = [...document.querySelectorAll('input[name=symptome]:checked')].map(e => e.value);
+            if(!symptomeAktuell){
                 console.log("Keine Symptome angegeben obwohl 'Ja' angekreuzt wurde.");
                 allInputsGiven = false;
             }else{
-                symptome = symptomeAktuell.value.split(',');
-                saveAnswer("parkinson_symptome_aktuell_text", symptome)
+                saveAnswer("parkinson_symptome_aktuell_symptome", symptomeAktuell.toString())
             }
     }
-
-    if("symptome_nach_medikamente_vorhanden" in questionnaire & questionnaire["symptome_nach_medikamente_vorhanden"]){
-        const symptomeAktuell = document.getElementById("symptome_nach_medikamente_vorhanden_text")
-        if(!symptomeAktuell.value){
-            console.log("Keine Symptome angegeben obwohl 'Ja' angekreuzt wurde.");
-            allInputsGiven = false;
-        }else{
-            symptome = symptomeAktuell.value.split(',');
-            saveAnswer("symptome_nach_medikamente_vorhanden_text", symptome)
-
-        }
-    }
+    
 
     //Zahleninputs
     const numericAnswers = document.querySelectorAll('input[type="number"]')
@@ -62,9 +63,10 @@ function checkInput(){
 
         
     if(allInputsGiven){
-        calculateRecommendation();
+        return true;
     }else{
         buttonStatusLabel.innerHTML = "Bitte alle Felder ausfüllen";
+        return false;
     }
 }    
 
@@ -72,15 +74,20 @@ function saveAnswer(key,value){
     if(key in questionnaire){
         console.log("Wert " + key + "existiert bereits");
     }else{
-        valueToSave = true;
-        if (value == "no"){
+        switch(value){
+            case "yes":
+                valueToSave = true;
+            case "no":                
             valueToSave = false;
+            default:
+                valueToSave = value;
         }
         console.log("speichere Wert " + key + ", " + valueToSave + " in questionnaire");
         questionnaire[key] = valueToSave;
     }
 }
 
+//Regeln verarbeiten
 async function checkRules(patient) {
     console.log(`Prüfe Regeln für Patient: ${JSON.stringify(patient)}`);
     for (const rule of rules) {
@@ -105,38 +112,74 @@ async function checkRules(patient) {
     }
 }
 
-async function executeRule(ruleName, questionnaire) {
-    const rule = rules.find(r => r.name === ruleName);
-    if (!rule) {
-        console.log(`Keine Regel gefunden mit dem Namen: ${ruleName}`);
+async function executeRule(rule) {
+    if(!rule){
         return;
     }
-    console.log(`Ausführung der Regel: ${ruleName}`); 
-    switch (ruleName) {
-        case "Therapieart Überprüfen":
-            if (!questionnaire.therapieArt) { 
-                const therapyType = await askQuestion('Welche Therapie? (THS/Andere) ');
-                questionnaire.therapieArt = therapyType.toUpperCase();
-                console.log(`Therapieart: ${questionnaire.therapieArt}`);
-            }
-            await checkRules(questionnaire);
-            break;
-        case "Letzte Kontrolle Überprüfen":
-            const lastControl = await askQuestion('Letzte Kontrolle vor mehr als 3 Monaten? (ja/nein) ');
-            questionnaire.letzteKontrolle = lastControl.toLowerCase() === 'ja';
-            console.log(`Letzte Kontrolle: ${questionnaire.letzteKontrolle}`);
-            await checkRules(questionnaire);
-            break;
-        case "Schrittmacher Überprüfen":
-            const schrittmacher = await askQuestion('Ist der Schrittmacher erschöpft? (ja/nein) ');
-            questionnaire.schrittmacherErschöpft = schrittmacher.toLowerCase() === 'ja';
-            console.log(`Schrittmacher erschöpft: ${questionnaire.schrittmacherErschöpft}`);
-            await checkRules(questionnaire);
-            break;
-        case "Batteriewechsel Überprüfen":
-            console.log('Wechsel der Batterie');
-            break;
-        default:
-            break;
+    console.log(`Ausführung der Regel: ${rule.name}`);
+    console.log(`Überprüfe Condition ${rule.condition}`);
+    
+    //chek if condition is true
+
+    console.log(rule.condition);
+    console.log(questionnaire)
+    console.log(`${eval(rule.condition)}`)  
+    if(eval(rule.condition)){
+        //checkIfFinished()
+        console.log(`Regel "${rule.name}" erfüllt.`);
+        console.log(`Führe nächste Regel "${rule.action}" aus.`);
+        findNextRule(rule.action);
+    }else{
+        console.log(`Regel "${rule.name}" nicht erfüllt.`);
+        console.log(`Führe nächste Regel "${rule.else}" aus.`);
+        executeRule(findNextRule(rule.else));
     }
+}
+
+//hier wird die nächste Regel gesucht oder das Programm beendet, wenn es soweit ist
+function findNextRule(ruleName){
+    
+    const regexNextRule = new RegExp("goto");
+    const regexFinished = new RegExp("finish");
+
+    if(regexNextRule.test(ruleName)){
+        ruleName = ruleName.split('=')[1];
+        console.log(ruleName);
+        const rule = rules.find(r => r.name === ruleName);
+        if (!rule) {
+            setResponseText(`Fehler: Keine Regel gefunden mit dem Namen: ${ruleName}`);
+            return;
+        }
+    return rule;
+    }
+    //Prozess endet nach dieser Regel
+    if(regexFinished.test(ruleName)){
+        const endStatusText = ruleName.split('=')[1];
+        setResponseText(`Beendet: ${endStatusText}`)
+    }
+    
+}
+
+
+function calculateRecommendation(){
+    //Name der ersten Regel
+    const firstRuleName = "Überprüfung auf aktuelle PK-Therapie";
+    const rule = rules.find(r => r.name === firstRuleName);
+    if(!rule){
+        const errorText = `Fehler: Startregel "${firstRuleName}" konnte nicht gefunden werden.`;
+        setResponseText(errorText);
+        return;
+    }else {        
+        console.log(`Starte Berechnung`);
+        executeRule(rule);
+    }
+    }
+       
+
+
+
+function setResponseText(text){
+    const label = document.getElementById("return_text")
+    label.innerHTML = text;
+    console.log(`setResponseText: ${text}`)
 }

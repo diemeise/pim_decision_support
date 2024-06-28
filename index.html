@@ -33,12 +33,11 @@
             </div>
     
             <div id="question_doctor_3">
-                <h3>Wenn Sie in der Vergangenheit eine nicht ausreichende medikamentöse Therapie erhalten haben, bestehen dann aktuell noch Symptome? Wenn ja welche?</h3>        
+                <h3>Wenn Sie in der Vergangenheit eine nicht ausreichende medikamentöse Therapie erhalten haben, bestehen dann aktuell noch Symptome? Wenn ja, geben Sie diese bitte unten an?</h3>        
                 <div>
                     <form id="symptome_nach_medikamente_vorhanden">
                         <input type="radio" id="symptome_nach_medikamente_vorhanden_yes" name="symptome_nach_medikamente_vorhanden" value="yes">
-                        <label for="symptome_nach_medikamente_vorhanden_yes" style="margin-right:15px">Ja, und zwar:</label>
-                        <input type="text" id="symptome_nach_medikamente_vorhanden_text" style="margin-right:15px">
+                        <label for="symptome_nach_medikamente_vorhanden_yes" style="margin-right:15px">Ja</label>
                         <input type="radio" id="symptome_nach_medikamente_vorhanden_no" name="symptome_nach_medikamente_vorhanden" value="no">
                         <label for="symptome_nach_medikamente_vorhanden_no">Nein</label>
                     </form>
@@ -72,9 +71,12 @@
             <div id="question_doctor_6">
                 <h3>Welche Symptome (PK) haben Sie?</h3>   
                 <div>
-                    <label>Bitte Symptome Kommagetrennt eingeben</label>
+                    <label>Bitte alle Vorhandenen Symptome ankreuzen</label>
                     <br>
-                    <input type="text" id="parkinson_smyptome_aktuell_text">
+                        <input type="checkbox" id="symptom_Entzugserscheinungen" name="symptome" value="entzugssymptome">
+                        <label for="symptom_Entzugserscheinungen"> Entzugssymptome</label>
+                        <input type="checkbox" id="symptom_Entzugserscheinungen" name="symptome" value="andere">
+                        <label for="symptom_Entzugserscheinungen" > Andere</label>
                 </div>
             </div>
     
@@ -198,7 +200,7 @@
                 </div>
             </div>
                     
-            <div id="question_doctor_1 7">
+            <div id="question_doctor_17">
                 <h3>Sind die Impulskontrollstörungen auf die Medikamentengabe zurückzuführen?</h3>        
                 <div>
                     <form id="impulskontrollstoerung_durch_medikamente">
@@ -206,6 +208,30 @@
                         <label for="impulskontrollstoerung_durch_medikamente_yes" style="margin-right:15px">Ja</label>
                         <input type="radio" id="impulskontrollstoerung_durch_medikamente_no" name="impulskontrollstoerung_durch_medikamente" value="no">
                         <label for="impulskontrollstoerung_durch_medikamente_no">Nein</label>
+                    </form>
+                </div>
+            </div>
+
+            <div id="question_doctor_18">
+                <h3>Ist mit einer Verbesserung der Wirkungsfluktuationen durch eine Optimierung der transmedaler / oraler Therapie zu rechnen?</h3>        
+                <div>
+                    <form id="verbesserung_durch_optimierung_oraler_therapie">
+                        <input type="radio" id="verbesserung_durch_optimierung_oraler_therapie_yes" name="verbesserung_durch_optimierung_oraler_therapie" value="yes">
+                        <label for="verbesserung_durch_optimierung_oraler_therapie_yes" style="margin-right:15px">Ja</label>
+                        <input type="radio" id="verbesserung_durch_optimierung_oraler_therapie_no" name="verbesserung_durch_optimierung_oraler_therapie" value="no">
+                        <label for="verbesserung_durch_optimierung_oraler_therapie_no">Nein</label>
+                    </form>
+                </div>
+            </div>
+
+            <div id="question_doctor_19">
+                <h3>Hat der Schrittmacher des*der Patient*in ausreichend Ladung?</h3>        
+                <div>
+                    <form id="schrittmacher_erschöpft">
+                        <input type="radio" id="schrittmacher_erschöpft_yes" name="schrittmacher_erschöpft" value="yes">
+                        <label for="schrittmacher_erschöpft_yes" style="margin-right:15px">Ja</label>
+                        <input type="radio" id="schrittmacher_erschöpft_no" name="schrittmacher_erschöpft" value="no">
+                        <label for="schrittmacher_erschöpft_no">Nein</label>
                     </form>
                 </div>
             </div>
@@ -275,11 +301,11 @@
 
         <div id="question_patient_7">
             <h3>Falls sie eine THS hatten, ist der Wechsel der Batterie länger als 3 Monate her?</h3>           
-            <form id="ths_batterie_3Jahre">
-                <input type="radio" id="ths_batterie_3Jahre_yes" name="ths_batterie_3Jahre" value="yes">
-                <label for="ths_batterie_3Jahre_yes" style="margin-right:15px">Ja</label>
-                <input type="radio" id="ths_batterie_3Jahre_no" name="ths_batterie_3Jahre" value="no">
-                <label for="ths_batterie_3Jahre_no">Nein</label>
+            <form id="ths_batterie_3Monate">
+                <input type="radio" id="ths_batterie_3Monate_yes" name="ths_batterie_3Monate" value="yes">
+                <label for="ths_batterie_3Monate_yes" style="margin-right:15px">Ja</label>
+                <input type="radio" id="ths_batterie_3Monate_no" name="ths_batterie_3Monate" value="no">
+                <label for="ths_batterie_3Monate_no">Nein</label>
             </form>
         </div>
 
@@ -324,8 +350,14 @@
             <br>
             <label id="button_status_text" style="color: darkred;"></label>
         </div>
+        <div style="margin-top: 120px; font-size: larger;" id = "div_return_text">
+            <h4 id="return_text_header">Ergebniss:</h4>
+            <label id="return_text"></label>
+        </div>
     </div>
 </div>
 </body>
 
-<script tyoe="text/javascript" src="parkinson.js"></script>
+
+<script src="./rules.js"></script>
+<script src="./parkinson.js"></script>
