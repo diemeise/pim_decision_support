@@ -91,7 +91,7 @@ const rules = [
   },
   {
     "name": "Letzte Kontrolle ueberpruefen",
-    "condition": "questionnaire.ths_batterie_aelter_drei_Monate === true || \"entzugssymptome\" in questionnaire.parkinson_symptome_aktuell_symptome || questionnaire.schrittmacher_erschoepft === true",
+    "condition": "questionnaire.ths_batterie_aelter_drei_Monate === true || questionnaire.parkinson_symptome_aktuell_symptome.includes(\"entzugssymptome\") || questionnaire.schrittmacher_erschoepft === true",
     "action": "goto=Schrittmacher ueberpruefen",
     "else": "goto=Keine Empfehlung moeglich"
   },
