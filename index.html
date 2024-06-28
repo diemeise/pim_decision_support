@@ -292,9 +292,11 @@
         <div id="question_patient_6">
             <h3>Wenn Sie aktuell eine Parkinson Therapie erhalten, um welche handelt es sich dabei? </h3>        
             <form id="aktuelle_therapieform">
-                <input type="radio" id="aktuelle_therapieform_yes" name="aktuelle_therapieform" value="Medikamentoes (Levodopa)">
+                <input type="radio" id="aktuelle_therapieform_no" name="aktuelle_therapieform" value="Keine">
+                <label for="aktuelle_therapieform_no">Keine</label>
+                <input type="radio" id="aktuelle_therapieform_medi" name="aktuelle_therapieform" value="Medikamentoes (Levodopa)">
                 <label for="aktuelle_therapieform_medi">Medikamentös (Levodopa)</label>
-                <input type="radio" id="aktuelle_therapieform_no" name="aktuelle_therapieform" value="THS">
+                <input type="radio" id="aktuelle_therapieform_ths" name="aktuelle_therapieform" value="THS">
                 <label for="aktuelle_therapieform_ths">THS</label>
             </form>
         </div>
@@ -343,6 +345,19 @@
                 <label for="1stunde_ueberbeweglichkeit_no">Nein</label>
             </form>
         </div>
+
+        <div id="question_patient_12">
+            <h3>Wenn sie schonmal eine Parkinson Therapie erhalten haben, um welche handelte es sich?</h3>        
+            <form id="alte_therapieform">
+                <input type="radio" id="alte_therapieform_no" name="alte_therapieform" value="Keine">
+                <label for="alte_therapieform_no">Keine</label>
+                <input type="radio" id="alte_therapieform_medi" name="alte_therapieform" value="Medikamentoes (Levodopa)">
+                <label for="alte_therapieform_medi">Medikamentös (Levodopa)</label>
+                <input type="radio" id="alte_therapieform_ths" name="alte_therapieform" value="THS">
+                <label for="alte_therapieform_ths">THS</label>
+            </form>
+        </div>
+
         <div id="div_button_send" style="margin-top: 120px;">
             <input type="button" id="button_send" value="Empfehlung anfordern">
             <br>

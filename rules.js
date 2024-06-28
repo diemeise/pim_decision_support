@@ -98,13 +98,35 @@ const rules = [
   {
     "name": "ueberpruefung auf fruehere PK-Therapie",
     "condition": "questionnaire.pk_therapie_aktuell === false && questionnaire.pk_therapie_vergangenheit === false",
-    "action": "goto=Welche Therapie wurde durchgefuehrt",
+    "action": "goto=Welche Therapie wurde durchgefuehrt 1",
     "else": "goto=Welche Symptome haben Sie"
+  },
+  {
+    "name": "Welche Therapie wurde durchgefuehrt 1",
+    "condition": "questionnaire.alte_therapieform === \"THS\"",
+    "action": "goto=Bestehen Entzugssymptome",
+    "else": "goto=Welche Therapie wurde durchgefuehrt 2"
+  },
+  {
+    "name": "Welche Therapie wurde durchgefuehrt 2",
+    "condition": "questionnaire.alte_therapieform === \"Medikamentoes (Levodopa)\"",
+    "action": "goto=Medikamentoese Therapie ausreichend",
+    "else": "goto=Ende Fehler"
+  },
+  {
+    "name": "Bestehen Entzugssymptome",
+    "condition": "questionnaire.parkinson_symptome_aktuell_symptome.includes(\"entzugssymptome\")",
+    "action": "goto=War letzte THS erfolgreich",
+    "else": "goto=Keine Empfehlung moeglich"
+  },
+  {
+    "name": "War letzte THS erfolgreich",
+    "condition": "ths_erfolgreich === true)",
+    "action": "goto=Empfehlung THS",
+    "else": "goto=Keine Empfehlung moeglich"
   },
 
 
-
-  
   {
     "name": "Empfehlung THS",
     "condition": "true === true",
@@ -149,5 +171,10 @@ const rules = [
     "name": "Schrittmacher ueberpruefen",
     "condition": "true === true",
     "action": "finish=Empfehlung: Batterie des Schrittmachers ueberpruefen"
+  },
+  {
+    "name": "Ende Fehler",
+    "condition": "true === true",
+    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten",
   }
 ]
