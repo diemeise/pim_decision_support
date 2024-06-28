@@ -19,29 +19,60 @@ const rules = [
   {
     "name": "Therapieart ueberpruefen Medikamentoes",
     "condition": "questionnaire.aktuelle_therapieform === \"Medikamentoes (Levodopa)\"",
-    "action": "goto=Medikamentoese Therapie ausreichend"
+    "action": "goto=Medikamentoese Therapie effectiv",
+    "else": "goto=Ende Fehler"
   },
   {
-    "name": "Medikamentoese Therapie ausreichend",
+    "name": "Medikamentoese Therapie effectiv",
+    "condition": "questionnaire.aktuelle_medikamente_sind_effektiv === true",
+    "action": "goto=Aktuelle Symptome ueberpruefen 3",
+    "else": "goto=Aktuelle Therapie ausreichend"
+  },
+  {
+    "name": "Aktuelle Therapie ausreichend",
     "condition": "questionnaire.aktuelle_medikamente_sind_ausreichend === true",
-    "action": "goto=Medikamentoese Therapie ausreichen",
+    "action": "goto=Aktuelle Therapie ausreichend",
     "else": "goto=Aktuelle Symptome ueberpruefen"
   },
   {
-    "name": "Medikamentoese Therapie ausreichend",
+    "name": "Aktuelle Therapie ausreichend",
     "condition": "true === true",
     "action": "finish=Die aktuelle Therapie ist ausreichend"
   },
   {
     "name": "Aktuelle Symptome ueberpruefen",
-    "condition": "schwerer_tremor_vorhanden === true",
+    "condition": "questionnaire.schwerer_tremor_vorhanden === true",
     "action": "goto=Kontraindikation STN vorhanden",
     "else": "goto=Aktuelle Symptome ueberpruefen 2"
   },
   {
     "name": "Aktuelle Symptome ueberpruefen 2",
-    "condition": "wirkungsfluktationen_vorhanden === true",
+    "condition": "questionnaire.wirkungsfluktationen_vorhanden === true",
     "action": "goto=Welche Therapie ist moeglich"
+  },
+  {
+    "name": "Aktuelle Symptome ueberpruefen 3",
+    "condition": "questionnaire.off_symptome_2h === true || questionnaire.1stunde_ueberbeweglichkeit === true",
+    "action": "goto=Empfehlung invasives Verfahren",
+    "else": "goto=Aktuelle Symptome ueberpruefen 4"
+  },
+  {
+    "name": "Aktuelle Symptome ueberpruefen 4",
+    "condition": "questionnaire.5_medikamente_tag === true",
+    "action": "goto=Levodopa Kombination Dopaminagonisten",
+    "else": "goto=Ende Fehler"
+  },
+  {
+    "name": "Levodopa Kombination Dopaminagonisten",
+    "condition": "questionnaire.levodopa_therapie_mit_dopaminagonisten === true",
+    "action": "goto=Levodopa Kombination Dopaminagonisten effektiv",
+    "else": "goto=Keine Empfehlung moeglich"
+  },
+  {
+    "name": "Levodopa Kombination Dopaminagonisten effektiv",
+    "condition": "questionnaire.levodopa_therapie_mit_dopaminagonisten_effektiv === true",
+    "action": "goto=Empfehlung invasives Verfahren",
+    "else": "goto=Keine Empfehlung moeglich"
   },
   {
     "name": "Kontraindikation STN vorhanden",
@@ -64,22 +95,22 @@ const rules = [
     "name": "Welche Therapie ist moeglich",
     "condition": "questionnaire.THS_moeglich === false && questionnaire.pumpentherapie_moeglich === false",
     "action": "goto=Empfehlung Pallidotomie",
-    "else": "goto=Welche Therapie ist moeglich 3"
+    "else": "goto=Welche Therapie ist moeglich 2"
   },
   {
-    "name": "Welche Therapie ist moeglich2",
+    "name": "Welche Therapie ist moeglich 2",
     "condition": "questionnaire.THS_moeglich === true && questionnaire.pumpentherapie_moeglich === false",
     "action": "goto=Verbesserung durch Optimierung oraler Therapie",
     "else": "goto=Welche Therapie ist moeglich 3"
   },
   {
-    "name": "Welche Therapie ist moeglich3",
+    "name": "Welche Therapie ist moeglich 3",
     "condition": "questionnaire.THS_moeglich === false && questionnaire.pumpentherapie_moeglich === true",
     "action": "goto=Empfehlung Pumpentherapie",
     "else": "goto=Welche Therapie ist moeglich 4"
   },
   {
-    "name": "Welche Therapie ist moeglich4",
+    "name": "Welche Therapie ist moeglich 4",
     "condition": "questionnaire.THS_moeglich === true && questionnaire.pumpentherapie_moeglich === true",
     "action": "goto=Empfehlung Pumpentherapie und THS"
   },
@@ -97,7 +128,7 @@ const rules = [
   },
   {
     "name": "ueberpruefung auf fruehere PK-Therapie",
-    "condition": "questionnaire.pk_therapie_aktuell === false && questionnaire.pk_therapie_vergangenheit === false",
+    "condition": "questionnaire.pk_therapie_vergangenheit === true",
     "action": "goto=Welche Therapie wurde durchgefuehrt 1",
     "else": "goto=Welche Symptome haben Sie"
   },
@@ -110,7 +141,7 @@ const rules = [
   {
     "name": "Welche Therapie wurde durchgefuehrt 2",
     "condition": "questionnaire.alte_therapieform === \"Medikamentoes (Levodopa)\"",
-    "action": "goto=Medikamentoese Therapie ausreichend",
+    "action": "goto=Medikamentoese Therapie effectiv",
     "else": "goto=Ende Fehler"
   },
   {
@@ -121,10 +152,12 @@ const rules = [
   },
   {
     "name": "War letzte THS erfolgreich",
-    "condition": "ths_erfolgreich === true)",
+    "condition": "questionnaire.ths_erfolgreich === true",
     "action": "goto=Empfehlung THS",
     "else": "goto=Keine Empfehlung moeglich"
   },
+
+
 
 
   {
@@ -175,6 +208,6 @@ const rules = [
   {
     "name": "Ende Fehler",
     "condition": "true === true",
-    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten",
+    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben überprüfen",
   }
 ]
