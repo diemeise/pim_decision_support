@@ -12,13 +12,13 @@ const rules = [
   },
   {
     "name": "Therapieart Überprüfen THS",
-    "condition": "questionnaire.aktuelle_therapieform === THS",
+    "condition": "questionnaire.aktuelle_therapieform === \"THS\"",
     "action": "goto=Letzte Kontrolle Überprüfen",
     "else": "goto=Therapieart Überprüfen Medikamentös"
   },
   {
     "name": "Therapieart Überprüfen Medikamentös",
-    "condition": "questionnaire.aktuelle_therapieform === Medikamentös (Levodopa)",
+    "condition": "questionnaire.aktuelle_therapieform === \"Medikamentös (Levodopa)\"",
     "action": "goto=Medikamentöse Therapie ausreichend"
   },
   {

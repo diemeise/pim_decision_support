@@ -75,12 +75,15 @@ function saveAnswer(key,value){
         console.log("Wert " + key + "existiert bereits");
     }else{
         switch(value){
-            case "yes":
+            case 'yes':
                 valueToSave = true;
-            case "no":                
-            valueToSave = false;
+                break;
+            case 'no':                
+                valueToSave = false;
+                break;
             default:
                 valueToSave = value;
+                break;
         }
         console.log("speichere Wert " + key + ", " + valueToSave + " in questionnaire");
         questionnaire[key] = valueToSave;
@@ -128,7 +131,7 @@ async function executeRule(rule) {
         //checkIfFinished()
         console.log(`Regel "${rule.name}" erfüllt.`);
         console.log(`Führe nächste Regel "${rule.action}" aus.`);
-        findNextRule(rule.action);
+        executeRule(findNextRule(rule.action));
     }else{
         console.log(`Regel "${rule.name}" nicht erfüllt.`);
         console.log(`Führe nächste Regel "${rule.else}" aus.`);
@@ -150,7 +153,7 @@ function findNextRule(ruleName){
             setResponseText(`Fehler: Keine Regel gefunden mit dem Namen: ${ruleName}`);
             return;
         }
-    return rule;
+        return rule;
     }
     //Prozess endet nach dieser Regel
     if(regexFinished.test(ruleName)){
