@@ -1,4 +1,3 @@
-
 const buttonSend = document.getElementById("button_send");
 buttonSend.addEventListener("click", onEvaluate);//checkInput);
 const buttonStatusLabel = document.getElementById("button_status_text")
@@ -166,12 +165,41 @@ function calculateRecommendation(){
         executeRule(rule);
     }
     }
-       
-
-
 
 function setResponseText(text){
     const label = document.getElementById("return_text")
     label.innerHTML = text;
     console.log(`setResponseText: ${text}`)
+}
+
+function setDebugButtons(){
+    //überprüfe ob testcases geladen sind
+    if (typeof loadTestCases === "function"){
+        const debugDiv = document.getElementById("debug_div");
+        const testCases = loadTestCases()
+        for (const testCase of testCases){
+            var button = document.createElement("input");
+            button.type = "button";
+            button.value= `Test ${testCases.indexOf(testCase)}`
+            //button.addEventListener("click", runTestCase(testCase.questionnaire, testCase.expected));
+            button.onclick = function(){runTestCase(testCase.questionnaire, testCase.expected);};
+            debugDiv.appendChild(button);
+        }
+    }
+}
+
+function runTestCase(testQuestionnaire, expected){
+    const debugLabel = document.getElementById("debug_label");
+    debugLabel.innerHTML = `Erwarte als Ergebnis: ${expected}`;
+    questionnaire = testQuestionnaire;
+    calculateRecommendation();
+    const result = document.getElementById("return_text").innerHTML;
+    
+    if (result === expected){
+        debugLabel.style ="background-color: green;"
+    }else{
+        debugLabel.style ="background-color: red;"
+    }
+    
+    
 }

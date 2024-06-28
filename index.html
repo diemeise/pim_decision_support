@@ -343,8 +343,6 @@
                 <label for="1stunde_ueberbeweglichkeit_no">Nein</label>
             </form>
         </div>
-
-
         <div id="div_button_send" style="margin-top: 120px;">
             <input type="button" id="button_send" value="Empfehlung anfordern">
             <br>
@@ -355,9 +353,15 @@
             <label id="return_text"></label>
         </div>
     </div>
+    <div id="debug_div">
+        <!-- wird durch js-code generiert -->
+        <label id="debug_label"></label>
+    </div>
 </div>
 </body>
 
 
 <script src="./rules.js"></script>
 <script src="./parkinson.js"></script>
+<!-- für Testcases auskommentieren-->
+<script src="./testing/testcases.js"></script>
