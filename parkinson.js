@@ -155,7 +155,7 @@ function findNextRule(ruleName){
 
 function calculateRecommendation(){
     //Name der ersten Regel
-    const firstRuleName = "Überprüfung auf aktuelle PK-Therapie";
+    const firstRuleName = "ueberpruefung auf aktuelle PK-Therapie";
     const rule = rules.find(r => r.name === firstRuleName);
     if(!rule){
         const errorText = `Fehler: Startregel "${firstRuleName}" konnte nicht gefunden werden.`;
