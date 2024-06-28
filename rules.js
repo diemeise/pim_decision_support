@@ -98,8 +98,13 @@ const rules = [
   {
     "name": "ueberpruefung auf fruehere PK-Therapie",
     "condition": "questionnaire.pk_therapie_aktuell === false && questionnaire.pk_therapie_vergangenheit === false",
-    "action": "finish=Therapiene werden ueberbewertet"
+    "action": "goto=Welche Therapie wurde durchgefuehrt",
+    "else": "goto=Welche Symptome haben Sie"
   },
+
+
+
+  
   {
     "name": "Empfehlung THS",
     "condition": "true === true",
