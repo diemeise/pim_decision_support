@@ -89,8 +89,6 @@ const rules = [
     "action": "goto=Keine Empfehlung möglich",
     "else": "goto=Empfehlung THS"
   },
-
-
   {
     "name": "Letzte Kontrolle Überprüfen",
     "condition": "ths_batterie_3Monate === true || \"entzugssymptome\" in questionnaire.parkinson_smyptome_aktuell_text || schrittmacher_erschöpft === true",
@@ -102,11 +100,6 @@ const rules = [
     "condition": "questionnaire.pk_therapie_aktuell === false && questionnaire.pk_therapie_vergangenheit === false",
     "action": "finish=Therapiene werden überbewertet"
   },
-
-
-
-
-
   {
     "name": "Empfehlung THS",
     "condition": "true === true",
@@ -146,8 +139,7 @@ const rules = [
     "name": "Keine Empfehlung möglich",
     "condition": "true === true",
     "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe möglich"
-  },
-  
+  },  
   {
     "name": "Schrittmacher Überprüfen",
     "condition": "true === true",
