@@ -42,7 +42,7 @@ const testcase1 = {
     "verbesserung_durch_optimierung_oraler_therapie": true,
     "wirkungsfluktationen_vorhanden": true
 }
-const expected1 = "Beendet: Batterie des Schrittmachers ueberpruefen"
+const expected1 = "Beendet: Empfehlung: Batterie des Schrittmachers ueberpruefen"
 
 const testcase2 = {
     "stunde_ueberbeweglichkeit": true,
@@ -76,6 +76,6 @@ const testcase2 = {
     "verbesserung_durch_optimierung_oraler_therapie": true,
     "wirkungsfluktationen_vorhanden": true
 }
-const expected2 = "Beendet: Batterie des Schrittmachers ueberpruefen"
+const expected2 = "Beendet: Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe moeglich"
 
 setDebugButtons();

@@ -143,6 +143,6 @@ const rules = [
   {
     "name": "Schrittmacher ueberpruefen",
     "condition": "true === true",
-    "action": "finish=Batterie des Schrittmachers ueberpruefen"
+    "action": "finish=Empfehlung: Batterie des Schrittmachers ueberpruefen"
   }
 ]
