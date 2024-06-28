@@ -5,43 +5,43 @@ function getRules() {
 
 const rules = [
   {
-    "name": "Überprüfung auf aktuelle PK-Therapie",
+    "name": "ueberpruefung auf aktuelle PK-Therapie",
     "condition": "questionnaire.pk_therapie_aktuell === true",
-    "action": "goto=Therapieart Überprüfen THS",
-    "else": "goto=Überprüfung auf frühere PK-Therapie"
+    "action": "goto=Therapieart ueberpruefen THS",
+    "else": "goto=ueberpruefung auf fruehere PK-Therapie"
   },
   {
-    "name": "Therapieart Überprüfen THS",
+    "name": "Therapieart ueberpruefen THS",
     "condition": "questionnaire.aktuelle_therapieform === \"THS\"",
-    "action": "goto=Letzte Kontrolle Überprüfen",
-    "else": "goto=Therapieart Überprüfen Medikamentös"
+    "action": "goto=Letzte Kontrolle ueberpruefen",
+    "else": "goto=Therapieart ueberpruefen Medikamentoes"
   },
   {
-    "name": "Therapieart Überprüfen Medikamentös",
-    "condition": "questionnaire.aktuelle_therapieform === \"Medikamentös (Levodopa)\"",
-    "action": "goto=Medikamentöse Therapie ausreichend"
+    "name": "Therapieart ueberpruefen Medikamentoes",
+    "condition": "questionnaire.aktuelle_therapieform === \"Medikamentoes (Levodopa)\"",
+    "action": "goto=Medikamentoese Therapie ausreichend"
   },
   {
-    "name": "Medikamentöse Therapie ausreichend",
+    "name": "Medikamentoese Therapie ausreichend",
     "condition": "questionnaire.aktuelle_medikamente_sind_ausreichend === true",
-    "action": "goto=Medikamentöse Therapie ausreichen",
-    "else": "goto=Aktuelle Symptome überprüfen"
+    "action": "goto=Medikamentoese Therapie ausreichen",
+    "else": "goto=Aktuelle Symptome ueberpruefen"
   },
   {
-    "name": "Medikamentöse Therapie ausreichend",
+    "name": "Medikamentoese Therapie ausreichend",
     "condition": "true === true",
     "action": "finish=Die aktuelle Therapie ist ausreichend"
   },
   {
-    "name": "Aktuelle Symptome überprüfen",
+    "name": "Aktuelle Symptome ueberpruefen",
     "condition": "schwerer_tremor_vorhanden === true",
     "action": "goto=Kontraindikation STN vorhanden",
-    "else": "goto=Aktuelle Symptome überprüfen 2"
+    "else": "goto=Aktuelle Symptome ueberpruefen 2"
   },
   {
-    "name": "Aktuelle Symptome überprüfen 2",
+    "name": "Aktuelle Symptome ueberpruefen 2",
     "condition": "wirkungsfluktationen_vorhanden === true",
-    "action": "goto=Welche Therapie ist möglich"
+    "action": "goto=Welche Therapie ist moeglich"
   },
   {
     "name": "Kontraindikation STN vorhanden",
@@ -58,47 +58,47 @@ const rules = [
   {
     "name": "Risikobewertung gegen OP",
     "condition": "questionnaire.risiko_gegen_op === true",
-    "action": "goto=Keine OP möglich"
+    "action": "goto=Keine OP moeglich"
   },
   {
-    "name": "Welche Therapie ist möglich",
-    "condition": "questionnaire.THS_möglich === false && questionnaire.pumpentherapie_möglich === false",
+    "name": "Welche Therapie ist moeglich",
+    "condition": "questionnaire.THS_moeglich === false && questionnaire.pumpentherapie_moeglich === false",
     "action": "goto=Empfehlung Pallidotomie",
-    "else": "goto=Welche Therapie ist möglich 3"
+    "else": "goto=Welche Therapie ist moeglich 3"
   },
   {
-    "name": "Welche Therapie ist möglich2",
-    "condition": "questionnaire.THS_möglich === true && questionnaire.pumpentherapie_möglich === false",
+    "name": "Welche Therapie ist moeglich2",
+    "condition": "questionnaire.THS_moeglich === true && questionnaire.pumpentherapie_moeglich === false",
     "action": "goto=Verbesserung durch Optimierung oraler Therapie",
-    "else": "goto=Welche Therapie ist möglich 3"
+    "else": "goto=Welche Therapie ist moeglich 3"
   },
   {
-    "name": "Welche Therapie ist möglich3",
-    "condition": "questionnaire.THS_möglich === false && questionnaire.pumpentherapie_möglich === true",
+    "name": "Welche Therapie ist moeglich3",
+    "condition": "questionnaire.THS_moeglich === false && questionnaire.pumpentherapie_moeglich === true",
     "action": "goto=Empfehlung Pumpentherapie",
-    "else": "goto=Welche Therapie ist möglich 4"
+    "else": "goto=Welche Therapie ist moeglich 4"
   },
   {
-    "name": "Welche Therapie ist möglich4",
-    "condition": "questionnaire.THS_möglich === true && questionnaire.pumpentherapie_möglich === true",
+    "name": "Welche Therapie ist moeglich4",
+    "condition": "questionnaire.THS_moeglich === true && questionnaire.pumpentherapie_moeglich === true",
     "action": "goto=Empfehlung Pumpentherapie und THS"
   },
   {
     "name": "Verbesserung durch Optimierung oraler Therapie",
     "condition": "questionnaire.verbesserung_durch_optimierung_oraler_therapie === true",
-    "action": "goto=Keine Empfehlung möglich",
+    "action": "goto=Keine Empfehlung moeglich",
     "else": "goto=Empfehlung THS"
   },
   {
-    "name": "Letzte Kontrolle Überprüfen",
-    "condition": "ths_batterie_3Monate === true || \"entzugssymptome\" in questionnaire.parkinson_smyptome_aktuell_text || schrittmacher_erschöpft === true",
-    "action": "goto=Schrittmacher Überprüfen",
-    "else": "goto=Keine Empfehlung möglich"
+    "name": "Letzte Kontrolle ueberpruefen",
+    "condition": "questionnaire.ths_batterie_3Monate === true || \"entzugssymptome\" in questionnaire.parkinson_symptome_aktuell_symptome || questionnaire.schrittmacher_erschoepft === true",
+    "action": "goto=Schrittmacher ueberpruefen",
+    "else": "goto=Keine Empfehlung moeglich"
   },
   {
-    "name": "Überprüfung auf frühere PK-Therapie",
+    "name": "ueberpruefung auf fruehere PK-Therapie",
     "condition": "questionnaire.pk_therapie_aktuell === false && questionnaire.pk_therapie_vergangenheit === false",
-    "action": "finish=Therapiene werden überbewertet"
+    "action": "finish=Therapiene werden ueberbewertet"
   },
   {
     "name": "Empfehlung THS",
@@ -131,18 +131,18 @@ const rules = [
     "action": "finish=Empfehlung: Pumpentherapie oder THS"
   },
   {
-    "name": "Keine OP möglich",
+    "name": "Keine OP moeglich",
     "condition": "true === true",
-    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Operation möglich"
+    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Operation moeglich"
   },
   {
-    "name": "Keine Empfehlung möglich",
+    "name": "Keine Empfehlung moeglich",
     "condition": "true === true",
-    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe möglich"
+    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe moeglich"
   },  
   {
-    "name": "Schrittmacher Überprüfen",
+    "name": "Schrittmacher ueberpruefen",
     "condition": "true === true",
-    "action": "finish=Batterie des Schrittmachers überprüfen"
+    "action": "finish=Batterie des Schrittmachers ueberpruefen"
   }
 ]

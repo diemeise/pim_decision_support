@@ -3,15 +3,6 @@ const buttonSend = document.getElementById("button_send");
 buttonSend.addEventListener("click", onEvaluate);//checkInput);
 const buttonStatusLabel = document.getElementById("button_status_text")
 var questionnaire = {}
-/* const rulesFile = fetch('rules.json')
-    .then((res) => res.text())
-    then((text) => {
-        JSON.parse(text);
-    })
-    . catch(e => (console.error(e)));
-    */
-//const rules = JSON.parse(fs.readFileSync('rules.json', 'utf8'));
-
 
 function onEvaluate(){
     if(checkInput()){
@@ -43,10 +34,9 @@ function checkInput(){
                 console.log("Keine Symptome angegeben obwohl 'Ja' angekreuzt wurde.");
                 allInputsGiven = false;
             }else{
-                saveAnswer("parkinson_symptome_aktuell_symptome", symptomeAktuell.toString())
+                saveAnswer("parkinson_symptome_aktuell_symptome", symptomeAktuell)
             }
-    }
-    
+    }    
 
     //Zahleninputs
     const numericAnswers = document.querySelectorAll('input[type="number"]')
@@ -60,7 +50,6 @@ function checkInput(){
         }
 
     })    
-
         
     if(allInputsGiven){
         return true;
