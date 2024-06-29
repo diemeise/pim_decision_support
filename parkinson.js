@@ -4,8 +4,10 @@ const buttonStatusLabel = document.getElementById("button_status_text")
 var questionnaire = {}
 
 function onEvaluate(){
-    if(checkInput()){
+    if(!checkInput()){
+        buttonStatusLabel.innerHTML = "Der Algorithmus funktioniert nicht immer korrekt, wenn nicht alle Fragen beantwortet wurden.<br> Bitte überprüfen Sie ihre Eingaben.";
     }
+    //Algorithmus wird trotzdem ausgeführt, Warnung muss reichen
     calculateRecommendation();
 }
 
@@ -26,7 +28,7 @@ function checkInput(){
         }
     });    
     
-    //checkboxen für Symptome wenn notwendig
+    //checkboxen für Symptome 
     if(("parkinson_symptome_aktuell" in questionnaire && questionnaire["parkinson_symptome_aktuell"] )|| ("symptome_nach_medikamente_vorhanden" in questionnaire && questionnaire["symptome_nach_medikamente_vorhanden"])){
             const symptomeAktuell = [...document.querySelectorAll('input[name=symptome]:checked')].map(e => e.value);
             if(!symptomeAktuell){
@@ -53,7 +55,6 @@ function checkInput(){
     if(allInputsGiven){
         return true;
     }else{
-        buttonStatusLabel.innerHTML = "Bitte alle Felder ausfüllen";
         return false;
     }
 }    
@@ -79,30 +80,6 @@ function saveAnswer(key,value){
 }
 
 //Regeln verarbeiten
-async function checkRules(patient) {
-    console.log(`Prüfe Regeln für Patient: ${JSON.stringify(patient)}`);
-    for (const rule of rules) {
-        const condition = new Function('Patient', `return ${rule.condition};`);
-        if (condition(patient) && !patient.lastRule || patient.lastRule !== rule.name) {
-            patient.lastRule = rule.name; 
-            const action = rule.action.split(' ');
-            console.log(`Regel erfüllt: ${rule.name}, Aktion: ${rule.action}`);
-            if (action[0] === 'goto') {
-                const nextRuleName = rule.action.substring(5).trim().replace(/'/g, '');
-                console.log(`Goto: ${nextRuleName}`);
-                await executeRule(nextRuleName, patient);
-                break;
-            } else if (action[0] === 'Prozess.ende()') {
-                console.log('ENDE des Prozesses.');
-                return;
-            } else if (action[0] === 'Batterie.wechseln()') {
-                console.log('Wechsel der Batterie wird ausgeführt.');
-                return;
-            }
-        }
-    }
-}
-
 async function executeRule(rule) {
     if(!rule){
         return;
@@ -111,7 +88,6 @@ async function executeRule(rule) {
     console.log(`Überprüfe Condition ${rule.condition}`);
     
     //chek if condition is true
-
     console.log(rule.condition);
     console.log(questionnaire)
     console.log(`${eval(rule.condition)}`)  
@@ -165,6 +141,9 @@ function calculateRecommendation(){
         executeRule(rule);
     }
     }
+
+
+
 
 function setResponseText(text){
     const label = document.getElementById("return_text")

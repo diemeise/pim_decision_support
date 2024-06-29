@@ -265,16 +265,16 @@ const rules = [
   {
     "name": "Keine Empfehlung moeglich",
     "condition": "true === true",
-    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe moeglich"
+    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe möglich"
   },  
   {
     "name": "Schrittmacher ueberpruefen",
     "condition": "true === true",
-    "action": "finish=Empfehlung: Batterie des Schrittmachers ueberpruefen"
+    "action": "finish=Empfehlung: Batterie des Schrittmachers überprüfen"
   },
   {
     "name": "Ende Fehler",
     "condition": "true === true",
-    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben ueberpruefen",
+    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben überprüfen",
   }
 ]
