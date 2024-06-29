@@ -159,31 +159,37 @@ const rules = [
   },
   {
     "name": "motorische Fluktuationen",
-    "condition": "questionnaire.Patient_aelter_als_60 === true && questionnaire.Verbesserungen_groeßer_33%_Levedopa-Test?",
+    "condition": "questionnaire.patient_alter > 60",
+    "action": "goto=Verbesserungen mehr 33 prozent",
+    "else": "goto=PK Diagnose aelter 4 Jahre"
+  },
+  {
+    "name": "Verbesserungen mehr 33 prozent",
+    "condition": "questionnaire.verbesserung_durch_optimierung_oraler_therapie === true",
     "action": "goto=Spricht Risikobewertung gegen OP?",
-    "else": "goto=PK DIagnose"
+    "else": "goto=Keine Empfehlung moeglich"
   },
   {
     "name": "Spricht Risikobewertung gegen OP?",
-    "condition": "questionnaire.Risikobewertung_gegen_OP === true",
+    "condition": "questionnaire.risiko_gegen_op === true",
     "action": "goto=Keine Empfehlung moeglich",
     "else": "goto=Empfehlung STN-THS"
   },
   {
-    "name": "PK DIagnose",
-    "condition": "questionnaire.Diagnose_groesser_4_jahren === true",
-    "action": "goto=Fluktuationen vorhanden?",
+    "name": "PK Diagnose aelter 4 Jahre",
+    "condition": "(questionnaire.patient_alter - questionnaire.alter_bei_PK_diagnose) > 4",
+    "action": "goto=Fluktuationen seit weniger als 3 Jahren vorhanden?",
     "else": "finish=Keine Empfehlung moeglich"
   },
   {
-    "name": "Fluktuationen vorhanden?",
-    "condition": "questionnaire.fluktuation_weniger_3_jahren === true",
-    "action": "goto=Verbesserungen > 50% durch stand. Levedopa-Test?",
+    "name": "Fluktuationen seit weniger als 3 Jahren vorhanden?",
+    "condition": "questionnaire.motorische_fluktuationen_weniger_3_jahre === true",
+    "action": "goto=Verbesserungen 50% durch stand. Levedopa-Test?",
     "else": "finish=Keine Empfehlung moeglich"
   },
   {
-    "name": "Verbesserungen > 50% durch stand. Levedopa-Test?",
-    "condition": "questionnaire.verbessserung_durch_levodopa === true",
+    "name": "Verbesserungen 50% durch stand. Levedopa-Test?",
+    "condition": "questionnaire.motorische_fluktuationen_durch_levodopa_kontrolliert === true",
     "action": "goto=Spricht Risikobewertung gegen OP?",
     "else": "finish=Keine Empfehlung moeglich"
   },
