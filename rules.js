@@ -132,6 +132,59 @@ const rules = [
     "action": "goto=Welche Therapie wurde durchgefuehrt 1",
     "else": "goto=Welche Symptome haben Sie"
   },
+  //tajs Regeln
+  {
+    "name": "Welche Symptome haben Sie?",
+    "condition": "questionnaire.impulskontrollstoerung_vorhanden === true",
+    "action": "goto=Ist eine orale Gabe von Medikamenten moeglich?",
+    "else": "goto=motorische Fluktuationen"
+  },
+  {
+    "name": "Ist eine orale Gabe von Medikamenten moeglich?",
+    "condition": "questionnaire.orale_gabe_von_medikamenten === true",
+    "action": "goto=Sind die Impulskontrollstoerungen auf die Medikamentengabe zurückzuführen?",
+    "else": "goto=Empfehlung STN-THS"
+  },
+  {
+    "name": "Sind die Impulskontrollstoerungen auf die Medikamentengabe zurückzuführen?",
+    "condition": "true === true",
+    "action": "goto=Empfehlung STN-THS",
+    "else": "goto=Keine Empfehlung moeglich"
+  },
+  {
+    "name": "motorische Fluktuationen",
+    "condition": "questionnaire.Patient_aelter_als_60 === true && questionnaire.Verbesserungen_groeßer_33%_Levedopa-Test?",
+    "action": "goto=Spricht Risikobewertung gegen OP?",
+    "else": "goto=PK DIagnose"
+  },
+  {
+    "name": "Spricht Risikobewertung gegen OP?",
+    "condition": "questionnaire.Risikobewertung_gegen_OP === true",
+    "action": "goto=Keine Empfehlung moeglich",
+    "else": "goto=Empfehlung STN-THS"
+  },
+  {
+    "name": "PK DIagnose",
+    "condition": "questionnaire.Diagnose_groesser_4_jahren === true",
+    "action": "goto=Fluktuationen vorhanden?",
+    "else": "finish=Keine Empfehlung moeglich"
+  },
+  {
+    "name": "Fluktuationen vorhanden?",
+    "condition": "questionnaire.fluktuation_weniger_3_jahren === true",
+    "action": "goto=Verbesserungen > 50% durch stand. Levedopa-Test?",
+    "else": "finish=Keine Empfehlung moeglich"
+  },
+  {
+    "name": "Verbesserungen > 50% durch stand. Levedopa-Test?",
+    "condition": "questionnaire.verbessserung_durch_levodopa === true",
+    "action": "goto=Spricht Risikobewertung gegen OP?",
+    "else": "finish=Keine Empfehlung moeglich"
+  },
+
+
+
+//nicht mehr taj
   {
     "name": "Welche Therapie wurde durchgefuehrt 1",
     "condition": "questionnaire.alte_therapieform === \"THS\"",
@@ -160,6 +213,8 @@ const rules = [
 
 
 
+
+  //Mögliche Empfehlungen
   {
     "name": "Empfehlung THS",
     "condition": "true === true",
