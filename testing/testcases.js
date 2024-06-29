@@ -22,10 +22,13 @@ const testcase1 = {
     "aktuelle_medikamente_sind_ausreichend": true,
     "aktuelle_medikamente_sind_effektiv": true,
     "aktuelle_therapieform": "THS",
+    "alte_therapieform": "THS",
     "alter_bei_PK_diagnose": "12",
     "impulskontrollstoerung_durch_medikamente": true,
     "impulskontrollstoerung_vorhanden": true,
     "kontraindikation_STN": true,
+    "levodopa_therapie_mit_dopaminagonisten": true,
+    "levodopa_therapie_mit_dopaminagonisten_effektiv": false,
     "motorische_fluktuationen_durch_levodopa_kontrolliert": true,
     "motorische_fluktuationen_weniger_3_jahre": true,
     "off_symptome_2h": true,
@@ -47,7 +50,7 @@ const testcase1 = {
     "verbesserung_durch_optimierung_oraler_therapie": true,
     "wirkungsfluktationen_vorhanden": true
 }
-const expected1 = "Beendet: Empfehlung: Batterie des Schrittmachers ueberpruefen"
+const expected1 = "Beendet: Empfehlung: Batterie des Schrittmachers überprüfen"
 
 const testcase2 = {
     "1stunde_ueberbeweglichkeit": true,
@@ -56,10 +59,13 @@ const testcase2 = {
     "aktuelle_medikamente_sind_ausreichend": true,
     "aktuelle_medikamente_sind_effektiv": true,
     "aktuelle_therapieform": "THS",
+    "alte_therapieform": "THS",
     "alter_bei_PK_diagnose": "12",
     "impulskontrollstoerung_durch_medikamente": true,
     "impulskontrollstoerung_vorhanden": true,
     "kontraindikation_STN": true,
+    "levodopa_therapie_mit_dopaminagonisten": false,
+    "levodopa_therapie_mit_dopaminagonisten_effektiv": false,
     "motorische_fluktuationen_durch_levodopa_kontrolliert": true,
     "motorische_fluktuationen_weniger_3_jahre": true,
     "off_symptome_2h": true,
@@ -81,10 +87,10 @@ const testcase2 = {
     "verbesserung_durch_optimierung_oraler_therapie": true,
     "wirkungsfluktationen_vorhanden": true
 }
-const expected2 = "Beendet: Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe moeglich"
+const expected2 = "Beendet: Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe möglich"
 
 const testcase3 = {
-    "stunde_ueberbeweglichkeit": true,
+    "1stunde_ueberbeweglichkeit": true,
     "5_medikamente_tag": true,
     "THS_moeglich": true,
     "aktuelle_medikamente_sind_ausreichend": true,

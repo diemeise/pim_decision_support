@@ -275,6 +275,6 @@ const rules = [
   {
     "name": "Ende Fehler",
     "condition": "true === true",
-    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben überprüfen",
+    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte überprüfen Sie ihre Eingaben",
   }
 ]
