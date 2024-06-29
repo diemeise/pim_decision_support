@@ -130,7 +130,7 @@ const rules = [
     "name": "ueberpruefung auf fruehere PK-Therapie",
     "condition": "questionnaire.pk_therapie_vergangenheit === true",
     "action": "goto=Welche Therapie wurde durchgefuehrt 1",
-    "else": "goto=Welche Symptome haben Sie"
+    "else": "goto=Welche Symptome haben Sie?"
   },
   //tajs Regeln
   {

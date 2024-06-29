@@ -29,15 +29,15 @@ function checkInput(){
     });    
     
     //checkboxen für Symptome 
+    var symptomeAktuell = [];
     if(("parkinson_symptome_aktuell" in questionnaire && questionnaire["parkinson_symptome_aktuell"] )|| ("symptome_nach_medikamente_vorhanden" in questionnaire && questionnaire["symptome_nach_medikamente_vorhanden"])){
-            const symptomeAktuell = [...document.querySelectorAll('input[name=symptome]:checked')].map(e => e.value);
+            symptomeAktuell = [...document.querySelectorAll('input[name=symptome]:checked')].map(e => e.value);
             if(!symptomeAktuell){
                 console.log("Keine Symptome angegeben obwohl 'Ja' angekreuzt wurde.");
-                allInputsGiven = false;
-            }else{
-                saveAnswer("parkinson_symptome_aktuell_symptome", symptomeAktuell)
-            }
+                allInputsGiven = false;                
+            }            
     }    
+    saveAnswer("parkinson_symptome_aktuell_symptome", symptomeAktuell)
 
     //Zahleninputs
     const numericAnswers = document.querySelectorAll('input[type="number"]')
