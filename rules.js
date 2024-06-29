@@ -137,19 +137,25 @@ const rules = [
     "name": "Welche Symptome haben Sie?",
     "condition": "questionnaire.impulskontrollstoerung_vorhanden === true",
     "action": "goto=Ist eine orale Gabe von Medikamenten moeglich?",
-    "else": "goto=motorische Fluktuationen"
+    "else": "goto=Welche Symptome haben Sie? 2"
   },
   {
     "name": "Ist eine orale Gabe von Medikamenten moeglich?",
-    "condition": "questionnaire.orale_gabe_von_medikamenten === true",
-    "action": "goto=Sind die Impulskontrollstoerungen auf die Medikamentengabe zurückzuführen?",
+    "condition": "questionnaire.orale_medikamente_moeglich === true",
+    "action": "goto=Sind die Impulskontrollstoerungen auf die Medikamentengabe zurueckzufuehren?",
     "else": "goto=Empfehlung STN-THS"
   },
   {
-    "name": "Sind die Impulskontrollstoerungen auf die Medikamentengabe zurückzuführen?",
-    "condition": "true === true",
+    "name": "Sind die Impulskontrollstoerungen auf die Medikamentengabe zurueckzufuehren?",
+    "condition": "questionnaire.impulskontrollstoerung_durch_medikamente === true",
     "action": "goto=Empfehlung STN-THS",
     "else": "goto=Keine Empfehlung moeglich"
+  },
+  {
+    "name": "Welche Symptome haben Sie? 2",
+    "condition": "questionnaire.parkinson_symptome_aktuell_symptome.includes(\"motorische_fluktuationen\")",
+    "action": "goto=motorische Fluktuationen",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "motorische Fluktuationen",
@@ -263,6 +269,6 @@ const rules = [
   {
     "name": "Ende Fehler",
     "condition": "true === true",
-    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben überprüfen",
+    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben ueberpruefen",
   }
 ]
