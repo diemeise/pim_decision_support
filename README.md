@@ -3,12 +3,12 @@
 Dieses Repository setzt einen Teil der Leitline _S2k-Leitlinie Parkinson-Krankheit_ Version 8.1 [(https://register.awmf.org/de/leitlinien/detail/030-010)](https://register.awmf.org/de/leitlinien/detail/030-010) als Algorithmus um.
 
 Der Algorithmus kann in der [drawIO-XML](https://github.com/diemeise/pim_decision_support/blob/main/DecisionTreePIM.drawio-3.xml) eingesehen werden.
-Aus diesem Algorithmus wurden Fragebogen erstellt, mit dessen Antworten Empfehlungen ausgegeben werden können.
+Aus diesem Algorithmus wurden Fragebogen erstellt, mit dessen Antworten Empfehlungen für weitere Therapieschritte ausgegeben werden können.
 
 
 ![Der Algorithmus aus drawio](./DecisionTreePIM.drawio-3.png)
 
-Durch das Öffnen der index.html-Datei in einem Browser können die Fragen beantwortet werden und eine Empfehlung angefordert werden. Es ist keine weitere Installation oder Konfiguration notwendig.
+Durch das Öffnen der index.html-Datei in einem Browser können die Fragen beantwortet und eine Empfehlung angefordert werden. Es ist keine weitere Installation oder Konfiguration notwendig.
 
 
 Für das Testen und Debuggen kann in der index.html-Datei die Zeile 423 auskommentiert werden.
