@@ -2,6 +2,7 @@ const buttonSend = document.getElementById("button_send");
 buttonSend.addEventListener("click", onEvaluate);//checkInput);
 const buttonStatusLabel = document.getElementById("button_status_text")
 var questionnaire = {}
+var traversedRules = []
 
 function onEvaluate(){
     if(!checkInput()){
@@ -90,17 +91,21 @@ async function executeRule(rule) {
     console.log(`Überprüfe Condition ${rule.condition}`);
     
     //chek if condition is true
-    console.log(rule.condition);
-    console.log(questionnaire)
-    console.log(`${eval(rule.condition)}`)  
+    //console.log(rule.condition);
+    //console.log(questionnaire)
+    //console.log(`${eval(rule.condition)}`)  
     if(eval(rule.condition)){
         //checkIfFinished()
         console.log(`Regel "${rule.name}" erfüllt.`);
         console.log(`Führe nächste Regel "${rule.action}" aus.`);
+        
+        traversedRules.push({rule: rule, conditionFullfilled: true});
         executeRule(findNextRule(rule.action));
     }else{
         console.log(`Regel "${rule.name}" nicht erfüllt.`);
         console.log(`Führe nächste Regel "${rule.else}" aus.`);
+
+        traversedRules.push({rule: rule, conditionFullfilled: false});
         executeRule(findNextRule(rule.else));
     }
 }
@@ -142,6 +147,7 @@ function calculateRecommendation(){
         console.log(`Starte Berechnung`);
         executeRule(rule);
     }
+    console.log(traversedRules);
     }
 
 
