@@ -1,8 +1,8 @@
 const buttonSend = document.getElementById("button_send");
 buttonSend.addEventListener("click", onEvaluate);//checkInput);
 const buttonStatusLabel = document.getElementById("button_status_text")
-var questionnaire = {}
-var traversedRules = []
+let questionnaire = {}
+let traversedRules = []
 
 function onEvaluate(){
     if(!checkInput()){
@@ -15,7 +15,7 @@ function onEvaluate(){
 }
 
 function checkInput(){
-    var allInputsGiven = true;
+    let allInputsGiven = true;
     
     questionnaire = {}
     
@@ -32,7 +32,7 @@ function checkInput(){
     });    
     
     //checkboxen für Symptome 
-    var symptomeAktuell = [];
+    let symptomeAktuell = [];
     if(("parkinson_symptome_aktuell" in questionnaire && questionnaire["parkinson_symptome_aktuell"] )|| ("symptome_nach_medikamente_vorhanden" in questionnaire && questionnaire["symptome_nach_medikamente_vorhanden"])){
             symptomeAktuell = [...document.querySelectorAll('input[name=symptome]:checked')].map(e => e.value);
             if(!symptomeAktuell){
@@ -90,10 +90,7 @@ async function executeRule(rule) {
     console.log(`Ausführung der Regel: ${rule.name}`);
     console.log(`Überprüfe Condition ${rule.condition}`);
     
-    //chek if condition is true
-    //console.log(rule.condition);
-    //console.log(questionnaire)
-    //console.log(`${eval(rule.condition)}`)  
+
     if(eval(rule.condition)){
         //checkIfFinished()
         console.log(`Regel "${rule.name}" erfüllt.`);
@@ -147,7 +144,9 @@ function calculateRecommendation(){
         console.log(`Starte Berechnung`);
         executeRule(rule);
     }
-    console.log(traversedRules);
+    if(document.getElementById("button_show_tree")){
+        document.getElementById("button_show_tree").style.visibility = 'visible';
+    }
     }
 
 
@@ -161,18 +160,27 @@ function setResponseText(text){
 
 function setDebugButtons(){
     //überprüfe ob testcases geladen sind
+    const debugDiv = document.getElementById("debug_div");
     if (typeof loadTestCases === "function"){
-        const debugDiv = document.getElementById("debug_div");
+        
         const testCases = loadTestCases()
         for (const testCase of testCases){
-            var button = document.createElement("input");
+            let button = document.createElement("input");
             button.type = "button";
+            button.id = `button_test_${testCases.indexOf(testCase)}`
             button.value= `Test ${testCases.indexOf(testCase)}`
-            //button.addEventListener("click", runTestCase(testCase.questionnaire, testCase.expected));
             button.onclick = function(){runTestCase(testCase.questionnaire, testCase.expected);};
             debugDiv.appendChild(button);
         }
     }
+    const buttonSend = document.getElementById("button_send");
+    let button = document.createElement("input");
+    button.type = "button";
+    button.id= `button_show_tree`
+    button.value= `Zeige Regelbaum`
+    button.style.visibility = 'hidden'
+    button.onclick = function(){showDebugTree();};
+    buttonSend.parentNode.insertBefore(button, buttonSend.nextSibling);
 }
 
 function runTestCase(testQuestionnaire, expected){
@@ -186,7 +194,36 @@ function runTestCase(testQuestionnaire, expected){
         debugLabel.style ="background-color: green;"
     }else{
         debugLabel.style ="background-color: red;"
+    }    
+}
+
+function showDebugTree(){
+    console.log(traversedRules);
+    //html-Text-erzeugen
+    const parentDiv = document.createElement("div");
+    let index = 0;
+    for (rule of traversedRules){
+        index = traversedRules.indexOf(rule)+1;
+        let div = document.createElement("div");
+        div.innerHTML = `
+            <b>Regel ${index}: ${rule.rule.name}</b></br>
+            Bedingung: ${rule.rule.condition}</br>
+            Erfüllt?: ${rule.conditionFullfilled}</br>`;
+        if(rule.conditionFullfilled){
+            div.innerHTML +=`
+            <i>Wenn: ${rule.rule.action}</i></br>
+            Sonst: ${rule.rule.else}</br>
+            </br>
+            `
+        }else{
+            div.innerHTML +=`
+            Wenn: ${rule.rule.action}</br>
+            <i>Sonst: ${rule.rule.else}</i></br>
+            </br>
+            `
+        }
+        parentDiv.appendChild(div);
     }
-    
-    
+    const treeDiv = document.getElementById("tree_div");
+    treeDiv.appendChild(parentDiv);
 }

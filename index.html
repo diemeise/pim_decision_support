@@ -17,9 +17,9 @@
 </head>
 
 <body>
-    <div >
-        <div style="float:left;width: 700px;">
-            <h2 id="questionnaire_doctor" > Fragebogen Arzt</h2>
+    <div id="questionnare_wrapper" style="width: auto;clear: both;">
+        <div id="questionnaire_doctor" style="float:left;width: 40%;">
+            <h2 > Fragebogen Arzt</h2>
             <label> Diese Fragen bitte dem*der Patient*in stellen.</label>
                 <div id="question_doctor_1">
                     <h3>Wenn Sie aktuell eine medikamentöse Therapie erhalten, war diese effektiv?</h3>        
@@ -274,7 +274,7 @@
                 </div>
         </div>
     
-        <div id="questionnaire_patient" style="margin-left: 900px">
+        <div id="questionnaire_patient" style="float:left;width: 40%;">
             <h1>Fragebogen Patient</h1>
             <label> Diese Fragen können von der*dem Patient*in selbst ausgefüllt werden. Bei Fragen bitte an das medizinische Personal wenden.</label>
             <div id="question_patient_1">
@@ -405,18 +405,24 @@
                 <label id="return_text"></label>
             </div>
         </div>
-        <div id="debug_div">
-            <!-- wird durch code generiert -->
-            <label id="debug_label"></label>
-        </div>
-    </div>
+        <div id="debug_wrapper" style="float:left;width: 20%;">
+            <div id="debug_div" style="width: fit-content">
+                <!-- wird durch code generiert -->
+                <label id="debug_label"></label>
+            </div>
+            <div id="tree_div" style="flex-wrap: wrap;width: fit-content">
+                <!-- wird durch code generiert -->
+            </div>
+        </div>        
     </body>
     
     
     <script src="./rules.js"></script>
     <script src="./parkinson.js"></script>
-    <!-- für Testcases auskommentieren-->
-    <script src="./testing/testcases.js"></script> 
+    <!-- für Testcases und Debug-Button auskommentieren-->
+    <!-- <script src="./testing/testcases.js"></script> --> 
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const radios = document.querySelectorAll('input[type="radio"]');
