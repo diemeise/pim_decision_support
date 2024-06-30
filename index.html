@@ -1,406 +1,445 @@
 <!DOCTYPE html>
-<head>
 
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-<div >
-    <div style="float:left;width: 700px;">
-        <h2 id="questionnaire_doctor" > Fragebogen Arzt</h2>
-        <label> Diese Fragen bitte dem*der Patient*in stellen.</label>
-            <div id="question_doctor_1">
-                <h3>Wenn Sie aktuell eine medikamentöse Therapie erhalten, war diese effektiv?</h3>        
+    <div id="questionnare_wrapper" style="width: auto;clear: both;">
+        <div id="questionnaire_doctor" style="float:left;width: 40%;">
+            <h2 > Fragebogen Arzt</h2>
+            <label> Diese Fragen bitte dem*der Patient*in stellen.</label>
+                <div id="question_doctor_1">
+                    <h3>Wenn Sie aktuell eine medikamentöse Therapie erhalten, war diese effektiv?</h3>        
+                    <div>
+                        <form id="aktuelle_medikamente_sind_effektiv">
+                            <input type="radio" id="aktuelle_medikamente_sind_effektiv_yes" name="aktuelle_medikamente_sind_effektiv" value="yes">
+                            <label for="aktuelle_medikamente_sind_effektiv_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="aktuelle_medikamente_sind_effektiv_no" name="aktuelle_medikamente_sind_effektiv" value="no">
+                            <label for="aktuelle_medikamente_sind_effektiv_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_2">
+                    <h3>War die medikamentöse Therapie ausreichend? </h3>        
+                    <div>
+                        <form id="aktuelle_medikamente_sind_ausreichend">
+                            <input type="radio" id="aktuelle_medikamente_sind_ausreichend_yes" name="aktuelle_medikamente_sind_ausreichend" value="yes">
+                            <label for=""aktuelle_medikamente_sind_ausreichend_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="aktuelle_medikamente_sind_ausreichend_no" name="aktuelle_medikamente_sind_ausreichend" value="no">
+                            <label for="aktuelle_medikamente_sind_ausreichend_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_3">
+                    <h3>Wenn Sie in der Vergangenheit eine nicht ausreichende medikamentöse Therapie erhalten haben, bestehen dann aktuell noch Symptome? Wenn ja, geben Sie diese bitte unten an?</h3>        
+                    <div>
+                        <form id="symptome_nach_medikamente_vorhanden">
+                            <input type="radio" id="symptome_nach_medikamente_vorhanden_yes" name="symptome_nach_medikamente_vorhanden" value="yes">
+                            <label for="symptome_nach_medikamente_vorhanden_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="symptome_nach_medikamente_vorhanden_no" name="symptome_nach_medikamente_vorhanden" value="no">
+                            <label for="symptome_nach_medikamente_vorhanden_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_4">
+                    <h3>Wenn bei ihnen im Moment motorische Fluktuationen bestehen, konnten diese in der Vergangenheit durch Gabe von Levodopa kontrolliert werden? </h3>        
+                    <div>
+                        <form id="motorische_fluktuationen_durch_levodopa_kontrolliert">
+                            <input type="radio" id="motorische_fluktuationen_durch_levodopa_kontrolliert_yes" name="motorische_fluktuationen_durch_levodopa_kontrolliert" value="yes">
+                            <label for="motorische_fluktuationen_durch_levodopa_kontrolliert_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="motorische_fluktuationen_durch_levodopa_kontrolliert_no" name="motorische_fluktuationen_durch_levodopa_kontrolliert" value="no">
+                            <label for="motorische_fluktuationen_durch_levodopa_kontrolliert_no">Nein</label>
+                         </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_5">
+                    <h3>Wenn bei ihnen motorische Fluktuationen bestehen, sind diese weniger als 3 Jahre vorhanden?</h3>        
+                    <div>
+                        <form id="motorische_fluktuationen_weniger_3_jahre">
+                            <input type="radio" id="motorische_fluktuationen_weniger_3_jahre_yes" name="motorische_fluktuationen_weniger_3_jahre" value="yes">
+                            <label for="motorische_fluktuationen_weniger_3_jahre_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="motorische_fluktuationen_weniger_3_jahre_no" name="motorische_fluktuationen_weniger_3_jahre" value="no">
+                            <label for="motorische_fluktuationen_weniger_3_jahre_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_6">
+                    <h3>Welche weiteren Symptome (PK) haben Sie?</h3>   
+                    <div>
+                        <label>Bitte alle Vorhandenen Symptome ankreuzen</label>
+                        <br>
+                            <input type="checkbox" id="symptom_Entzugserscheinungen" name="symptome" value="entzugssymptome">
+                            <label for="symptom_Entzugserscheinungen"> Entzugssymptome</label>
+                            <input type="checkbox" id="symptom_Entzugserscheinungen" name="symptome" value="motorische_fluktuationen">
+                            <label for="symptom_Entzugserscheinungen" > Motorische Fluktuationen</label>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_7">
+                    <h3>Ist eine orale Gabe von Medikamenten möglich?</h3>        
+                    <div>
+                        <form id="orale_medikamente_moeglich">
+                            <input type="radio" id="orale_medikamente_moeglich_yes" name="orale_medikamente_moeglich" value="yes">
+                            <label for="orale_medikamente_moeglich_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="orale_medikamente_moeglich_no" name="orale_medikamente_moeglich" value="no">
+                            <label for="orale_medikamente_moeglich_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_8">
+                    <h3>War die letzte THS des Patienten erfolgreich?</h3>        
+                    <div>
+                        <form id="ths_erfolgreich">
+                            <input type="radio" id="ths_erfolgreich_yes" name="ths_erfolgreich" value="yes">
+                            <label for="ths_erfolgreich_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="ths_erfolgreich_no" name="ths_erfolgreich" value="no">
+                            <label for="ths_erfolgreich_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_9">
+                    <h3>Spricht eine Risikobewertung gegen eine OP?</h3>        
+                    <div>
+                        <form id="risiko_gegen_op">
+                            <input type="radio" id="risiko_gegen_op_yes" name="risiko_gegen_op" value="yes">
+                            <label for="risiko_gegen_op_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="risiko_gegen_op_no" name="risiko_gegen_op" value="no">
+                            <label for="risiko_gegen_op_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_10">
+                    <h3>Hat der Patient einen schweren Tremor?</h3>        
+                    <div>
+                        <form id="schwerer_tremor_vorhanden">
+                            <input type="radio" id="schwerer_tremor_vorhanden_yes" name="schwerer_tremor_vorhanden" value="yes">
+                            <label for="schwerer_tremor_vorhanden_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="schwerer_tremor_vorhanden_no" name="schwerer_tremor_vorhanden" value="no">
+                            <label for="schwerer_tremor_vorhanden_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_11">
+                    <h3>Bestehen Wirkungsfluktationen?</h3>        
+                    <div>
+                        <form id="wirkungsfluktationen_vorhanden">
+                            <input type="radio" id="wirkungsfluktationen_vorhanden_yes" name="wirkungsfluktationen_vorhanden" value="yes">
+                            <label for="wirkungsfluktationen_vorhanden_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="wirkungsfluktationen_vorhanden_no" name="wirkungsfluktationen_vorhanden" value="no">
+                            <label for="wirkungsfluktationen_vorhanden_no">Nein</label>
+                    </form>
+                    </div>
+                </div>
+        
+                <div id="question_doctor_12">
+                    <h3>Ist eine THS Therapie möglich?</h3>        
+                    <div>
+                        <form id="THS_moeglich">
+                            <input type="radio" id="THS_moeglich_yes" name="THS_moeglich" value="yes">
+                            <label for="THS_moeglich_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="THS_moeglich_no" name="THS_moeglich" value="no">
+                            <label for="THS_moeglich_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="question_doctor_1 3">
+                    <h3>Ist eine Pumpentherapie möglich?</h3>        
+                    <div>
+                        <form id="pumpentherapie_moeglich">
+                            <input type="radio" id="pumpentherapie_moeglich_yes" name="pumpentherapie_moeglich" value="yes">
+                            <label for="pumpentherapie_moeglich_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="pumpentherapie_moeglich_no" name="pumpentherapie_moeglich" value="no">
+                            <label for="pumpentherapie_moeglich_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+                        
+                <div id="question_doctor_14">
+                    <h3>Gibt es eine Kontraindikation gegen eine STN-THS?</h3>        
+                    <div>
+                        <form id="kontraindikation_STN">
+                            <input type="radio" id="kontraindikation_STN_yes" name="kontraindikation_STN" value="yes">
+                            <label for="kontraindikation_STN_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="kontraindikation_STN_no" name="kontraindikation_STN" value="no">
+                            <label for="kontraindikation_STN_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+                        
+                <div id="question_doctor_15">
+                    <h3>Hat der Patient 2 oder mehr stunden pro Tag Off-Symptome?</h3>        
+                    <div>
+                        <form id="off_symptome_2h">
+                            <input type="radio" id="off_symptome_2h_yes" name="off_symptome_2h" value="yes">
+                            <label for="off_symptome_2h_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="off_symptome_2h_no" name="off_symptome_2h" value="no">
+                            <label for="off_symptome_2h_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+                        
+                <div id="question_doctor_16">
+                    <h3>Besteht eine Impulskontrollstörung bei dem Patienten?</h3>        
+                    <div>
+                        <form id="impulskontrollstoerung_vorhanden">
+                            <input type="radio" id="impulskontrollstoerung_vorhanden_yes" name="impulskontrollstoerung_vorhanden" value="yes">
+                            <label for="impulskontrollstoerung_vorhanden_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="impulskontrollstoerung_vorhanden_no" name="impulskontrollstoerung_vorhanden" value="no">
+                            <label for="impulskontrollstoerung_vorhanden_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+                        
+                <div id="question_doctor_17">
+                    <h3>Sind die Impulskontrollstörungen auf die Medikamentengabe zurückzuführen?</h3>        
+                    <div>
+                        <form id="impulskontrollstoerung_durch_medikamente">
+                            <input type="radio" id="impulskontrollstoerung_durch_medikamente_yes" name="impulskontrollstoerung_durch_medikamente" value="yes">
+                            <label for="impulskontrollstoerung_durch_medikamente_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="impulskontrollstoerung_durch_medikamente_no" name="impulskontrollstoerung_durch_medikamente" value="no">
+                            <label for="impulskontrollstoerung_durch_medikamente_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+    
+                <div id="question_doctor_18">
+                    <h3>Ist mit einer Verbesserung der Wirkungsfluktuationen durch eine Optimierung der transmedaler / oraler Therapie zu rechnen?</h3>        
+                    <div>
+                        <form id="verbesserung_durch_optimierung_oraler_therapie">
+                            <input type="radio" id="verbesserung_durch_optimierung_oraler_therapie_yes" name="verbesserung_durch_optimierung_oraler_therapie" value="yes">
+                            <label for="verbesserung_durch_optimierung_oraler_therapie_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="verbesserung_durch_optimierung_oraler_therapie_no" name="verbesserung_durch_optimierung_oraler_therapie" value="no">
+                            <label for="verbesserung_durch_optimierung_oraler_therapie_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+    
+                <div id="question_doctor_19">
+                    <h3>Hat der Schrittmacher des*der Patient*in ausreichend Ladung?</h3>        
+                    <div>
+                        <form id="schrittmacher_hat_Ladung">
+                            <input type="radio" id="schrittmacher_hat_Ladung_yes" name="schrittmacher_hat_Ladung" value="yes">
+                            <label for="schrittmacher_hat_Ladung_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="schrittmacher_hat_Ladung_no" name="schrittmacher_hat_Ladung" value="no">
+                            <label for="schrittmacher_hat_Ladung_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+    
+                <div id="question_doctor_20">
+                    <h3>Gab es einen adäquaten Versuch einer Levodopa Therapie in Kombination mit: Dopaminagonisten / MAO-B- COMT-Hemmer?</h3>        
+                    <div>
+                        <form id="levodopa_therapie_mit_dopaminagonisten">
+                            <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_yes" name="levodopa_therapie_mit_dopaminagonisten" value="yes">
+                            <label for="levodopa_therapie_mit_dopaminagonisten_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_no" name="levodopa_therapie_mit_dopaminagonisten" value="no">
+                            <label for="levodopa_therapie_mit_dopaminagonisten_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+    
+                <div id="question_doctor_21">
+                    <h3>War diese effektiv?</h3>        
+                    <div>
+                        <form id="levodopa_therapie_mit_dopaminagonisten_effektiv">
+                            <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_effektiv_yes" name="levodopa_therapie_mit_dopaminagonisten_effektiv" value="yes">
+                            <label for="levodopa_therapie_mit_dopaminagonisten_effektiv_yes" style="margin-right:15px">Ja</label>
+                            <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_effektiv_no" name="levodopa_therapie_mit_dopaminagonisten_effektiv" value="no">
+                            <label for="levodopa_therapie_mit_dopaminagonisten_effektiv_no">Nein</label>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    
+        <div id="questionnaire_patient" style="float:left;width: 40%;">
+            <h1>Fragebogen Patient</h1>
+            <label> Diese Fragen können von der*dem Patient*in selbst ausgefüllt werden. Bei Fragen bitte an das medizinische Personal wenden.</label>
+            <div id="question_patient_1">
+                <h3 >Wie alt sind Sie?</h3>        
+                <input type="number" id="patient_alter" max="120" min="0" inputmode="numeric">
+            </div>
+    
+            <div id="question_patient_2">
+                <h3>Wurde bei ihnen bereits Parkinson diagnostiziert</h3>        
                 <div>
-                    <form id="aktuelle_medikamente_sind_effektiv">
-                        <input type="radio" id="aktuelle_medikamente_sind_effektiv_yes" name="aktuelle_medikamente_sind_effektiv" value="yes">
-                        <label for="aktuelle_medikamente_sind_effektiv_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="aktuelle_medikamente_sind_effektiv_no" name="aktuelle_medikamente_sind_effektiv" value="no">
-                        <label for="aktuelle_medikamente_sind_effektiv_no">Nein</label>
+                    <form id="pk_diagnose_vorhanden">
+                        <input type="radio" id="pk_diagnose_vorhanden_yes" name="pk_diagnose_vorhanden" value="yes">
+                        <label for="pk_diagnose_vorhanden_yes" style="margin-right:15px">Ja</label>
+                        <input type="radio" id="pk_diagnose_vorhanden_no" name="pk_diagnose_vorhanden" value="no">
+                        <label for="pk_diagnose_vorhanden_no">Nein</label>
                     </form>
                 </div>
             </div>
     
-            <div id="question_doctor_2">
-                <h3>War die medikamentöse Therapie ausreichend? </h3>        
+            <div id="question_patient_3">
+                <h3>Hatten Sie in der Vergangenheit eine Parkinson-Therapie?</h3>        
                 <div>
-                    <form id="aktuelle_medikamente_sind_ausreichend">
-                        <input type="radio" id="aktuelle_medikamente_sind_ausreichend_yes" name="aktuelle_medikamente_sind_ausreichend" value="yes">
-                        <label for=""aktuelle_medikamente_sind_ausreichend_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="aktuelle_medikamente_sind_ausreichend_no" name="aktuelle_medikamente_sind_ausreichend" value="no">
-                        <label for="aktuelle_medikamente_sind_ausreichend_no">Nein</label>
+                    <form id="pk_therapie_vergangenheit">
+                        <input type="radio" id="pk_therapie_vergangenheit_yes" name="pk_therapie_vergangenheit" value="yes">
+                        <label for="pk_therapie_vergangenheit_yes" style="margin-right:15px">Ja</label>
+                        <input type="radio" id="pk_therapie_vergangenheit_no" name="pk_therapie_vergangenheit" value="no">
+                        <label for="pk_therapie_vergangenheit_no">Nein</label>
                     </form>
                 </div>
             </div>
     
-            <div id="question_doctor_3">
-                <h3>Wenn Sie in der Vergangenheit eine nicht ausreichende medikamentöse Therapie erhalten haben, bestehen dann aktuell noch Symptome? Wenn ja, geben Sie diese bitte unten an?</h3>        
-                <div>
-                    <form id="symptome_nach_medikamente_vorhanden">
-                        <input type="radio" id="symptome_nach_medikamente_vorhanden_yes" name="symptome_nach_medikamente_vorhanden" value="yes">
-                        <label for="symptome_nach_medikamente_vorhanden_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="symptome_nach_medikamente_vorhanden_no" name="symptome_nach_medikamente_vorhanden" value="no">
-                        <label for="symptome_nach_medikamente_vorhanden_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_4">
-                <h3>Wenn bei ihnen im Moment motorische Fluktuationen bestehen, konnten diese in der Vergangenheit durch Gabe von Levodopa kontrolliert werden? </h3>        
-                <div>
-                    <form id="motorische_fluktuationen_durch_levodopa_kontrolliert">
-                        <input type="radio" id="motorische_fluktuationen_durch_levodopa_kontrolliert_yes" name="motorische_fluktuationen_durch_levodopa_kontrolliert" value="yes">
-                        <label for="motorische_fluktuationen_durch_levodopa_kontrolliert_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="motorische_fluktuationen_durch_levodopa_kontrolliert_no" name="motorische_fluktuationen_durch_levodopa_kontrolliert" value="no">
-                        <label for="motorische_fluktuationen_durch_levodopa_kontrolliert_no">Nein</label>
-                     </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_5">
-                <h3>Wenn bei ihnen motorische Fluktuationen bestehen, sind diese weniger als 3 Jahre vorhanden?</h3>        
-                <div>
-                    <form id="motorische_fluktuationen_weniger_3_jahre">
-                        <input type="radio" id="motorische_fluktuationen_weniger_3_jahre_yes" name="motorische_fluktuationen_weniger_3_jahre" value="yes">
-                        <label for="motorische_fluktuationen_weniger_3_jahre_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="motorische_fluktuationen_weniger_3_jahre_no" name="motorische_fluktuationen_weniger_3_jahre" value="no">
-                        <label for="motorische_fluktuationen_weniger_3_jahre_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_6">
-                <h3>Welche weiteren Symptome (PK) haben Sie?</h3>   
-                <div>
-                    <label>Bitte alle Vorhandenen Symptome ankreuzen</label>
-                    <br>
-                        <input type="checkbox" id="symptom_Entzugserscheinungen" name="symptome" value="entzugssymptome">
-                        <label for="symptom_Entzugserscheinungen"> Entzugssymptome</label>
-                        <input type="checkbox" id="symptom_Entzugserscheinungen" name="symptome" value="motorische_fluktuationen">
-                        <label for="symptom_Entzugserscheinungen" > Motorische Fluktuationen</label>
-                </div>
-            </div>
-    
-            <div id="question_doctor_7">
-                <h3>Ist eine orale Gabe von Medikamenten möglich?</h3>        
-                <div>
-                    <form id="orale_medikamente_moeglich">
-                        <input type="radio" id="orale_medikamente_moeglich_yes" name="orale_medikamente_moeglich" value="yes">
-                        <label for="orale_medikamente_moeglich_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="orale_medikamente_moeglich_no" name="orale_medikamente_moeglich" value="no">
-                        <label for="orale_medikamente_moeglich_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_8">
-                <h3>War die letzte THS des Patienten erfolgreich?</h3>        
-                <div>
-                    <form id="ths_erfolgreich">
-                        <input type="radio" id="ths_erfolgreich_yes" name="ths_erfolgreich" value="yes">
-                        <label for="ths_erfolgreich_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="ths_erfolgreich_no" name="ths_erfolgreich" value="no">
-                        <label for="ths_erfolgreich_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_9">
-                <h3>Spricht eine Risikobewertung gegen eine OP?</h3>        
-                <div>
-                    <form id="risiko_gegen_op">
-                        <input type="radio" id="risiko_gegen_op_yes" name="risiko_gegen_op" value="yes">
-                        <label for="risiko_gegen_op_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="risiko_gegen_op_no" name="risiko_gegen_op" value="no">
-                        <label for="risiko_gegen_op_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_10">
-                <h3>Hat der Patient einen schweren Tremor?</h3>        
-                <div>
-                    <form id="schwerer_tremor_vorhanden">
-                        <input type="radio" id="schwerer_tremor_vorhanden_yes" name="schwerer_tremor_vorhanden" value="yes">
-                        <label for="schwerer_tremor_vorhanden_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="schwerer_tremor_vorhanden_no" name="schwerer_tremor_vorhanden" value="no">
-                        <label for="schwerer_tremor_vorhanden_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    
-            <div id="question_doctor_11">
-                <h3>Bestehen Wirkungsfluktationen?</h3>        
-                <div>
-                    <form id="wirkungsfluktationen_vorhanden">
-                        <input type="radio" id="wirkungsfluktationen_vorhanden_yes" name="wirkungsfluktationen_vorhanden" value="yes">
-                        <label for="wirkungsfluktationen_vorhanden_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="wirkungsfluktationen_vorhanden_no" name="wirkungsfluktationen_vorhanden" value="no">
-                        <label for="wirkungsfluktationen_vorhanden_no">Nein</label>
+            <div id="question_patient_4">
+                <h3>Erhalten Sie aktuell eine Parkinson-Therapie?</h3>        
+                <form id="pk_therapie_aktuell">
+                    <input type="radio" id="pk_therapie_aktuell_yes" name="pk_therapie_aktuell" value="yes">
+                    <label for="pk_therapie_aktuell_yes" style="margin-right:15px">Ja</label>
+                    <input type="radio" id="pk_therapie_aktuell_no" name="pk_therapie_aktuell" value="no">
+                    <label for="pk_therapie_aktuell_no">Nein</label>
                 </form>
-                </div>
             </div>
     
-            <div id="question_doctor_12">
-                <h3>Ist eine THS Therapie möglich?</h3>        
-                <div>
-                    <form id="THS_moeglich">
-                        <input type="radio" id="THS_moeglich_yes" name="THS_moeglich" value="yes">
-                        <label for="THS_moeglich_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="THS_moeglich_no" name="THS_moeglich" value="no">
-                        <label for="THS_moeglich_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-            
-            <div id="question_doctor_1 3">
-                <h3>Ist eine Pumpentherapie möglich?</h3>        
-                <div>
-                    <form id="pumpentherapie_moeglich">
-                        <input type="radio" id="pumpentherapie_moeglich_yes" name="pumpentherapie_moeglich" value="yes">
-                        <label for="pumpentherapie_moeglich_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="pumpentherapie_moeglich_no" name="pumpentherapie_moeglich" value="no">
-                        <label for="pumpentherapie_moeglich_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-                    
-            <div id="question_doctor_14">
-                <h3>Gibt es eine Kontraindikation gegen eine STN-THS?</h3>        
-                <div>
-                    <form id="kontraindikation_STN">
-                        <input type="radio" id="kontraindikation_STN_yes" name="kontraindikation_STN" value="yes">
-                        <label for="kontraindikation_STN_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="kontraindikation_STN_no" name="kontraindikation_STN" value="no">
-                        <label for="kontraindikation_STN_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-                    
-            <div id="question_doctor_15">
-                <h3>Hat der Patient 2 oder mehr stunden pro Tag Off-Symptome?</h3>        
-                <div>
-                    <form id="off_symptome_2h">
-                        <input type="radio" id="off_symptome_2h_yes" name="off_symptome_2h" value="yes">
-                        <label for="off_symptome_2h_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="off_symptome_2h_no" name="off_symptome_2h" value="no">
-                        <label for="off_symptome_2h_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-                    
-            <div id="question_doctor_16">
-                <h3>Besteht eine Impulskontrollstörung bei dem Patienten?</h3>        
-                <div>
-                    <form id="impulskontrollstoerung_vorhanden">
-                        <input type="radio" id="impulskontrollstoerung_vorhanden_yes" name="impulskontrollstoerung_vorhanden" value="yes">
-                        <label for="impulskontrollstoerung_vorhanden_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="impulskontrollstoerung_vorhanden_no" name="impulskontrollstoerung_vorhanden" value="no">
-                        <label for="impulskontrollstoerung_vorhanden_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-                    
-            <div id="question_doctor_17">
-                <h3>Sind die Impulskontrollstörungen auf die Medikamentengabe zurückzuführen?</h3>        
-                <div>
-                    <form id="impulskontrollstoerung_durch_medikamente">
-                        <input type="radio" id="impulskontrollstoerung_durch_medikamente_yes" name="impulskontrollstoerung_durch_medikamente" value="yes">
-                        <label for="impulskontrollstoerung_durch_medikamente_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="impulskontrollstoerung_durch_medikamente_no" name="impulskontrollstoerung_durch_medikamente" value="no">
-                        <label for="impulskontrollstoerung_durch_medikamente_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-
-            <div id="question_doctor_18">
-                <h3>Ist mit einer Verbesserung der Wirkungsfluktuationen durch eine Optimierung der transmedaler / oraler Therapie zu rechnen?</h3>        
-                <div>
-                    <form id="verbesserung_durch_optimierung_oraler_therapie">
-                        <input type="radio" id="verbesserung_durch_optimierung_oraler_therapie_yes" name="verbesserung_durch_optimierung_oraler_therapie" value="yes">
-                        <label for="verbesserung_durch_optimierung_oraler_therapie_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="verbesserung_durch_optimierung_oraler_therapie_no" name="verbesserung_durch_optimierung_oraler_therapie" value="no">
-                        <label for="verbesserung_durch_optimierung_oraler_therapie_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-
-            <div id="question_doctor_19">
-                <h3>Hat der Schrittmacher des*der Patient*in ausreichend Ladung?</h3>        
-                <div>
-                    <form id="schrittmacher_hat_Ladung">
-                        <input type="radio" id="schrittmacher_hat_Ladung_yes" name="schrittmacher_hat_Ladung" value="yes">
-                        <label for="schrittmacher_hat_Ladung_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="schrittmacher_hat_Ladung_no" name="schrittmacher_hat_Ladung" value="no">
-                        <label for="schrittmacher_hat_Ladung_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-
-            <div id="question_doctor_20">
-                <h3>Gab es einen adäquaten Versuch einer Levodopa Therapie in Kombination mit: Dopaminagonisten / MAO-B- COMT-Hemmer?</h3>        
-                <div>
-                    <form id="levodopa_therapie_mit_dopaminagonisten">
-                        <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_yes" name="levodopa_therapie_mit_dopaminagonisten" value="yes">
-                        <label for="levodopa_therapie_mit_dopaminagonisten_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_no" name="levodopa_therapie_mit_dopaminagonisten" value="no">
-                        <label for="levodopa_therapie_mit_dopaminagonisten_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-
-            <div id="question_doctor_21">
-                <h3>War diese effektiv?</h3>        
-                <div>
-                    <form id="levodopa_therapie_mit_dopaminagonisten_effektiv">
-                        <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_effektiv_yes" name="levodopa_therapie_mit_dopaminagonisten_effektiv" value="yes">
-                        <label for="levodopa_therapie_mit_dopaminagonisten_effektiv_yes" style="margin-right:15px">Ja</label>
-                        <input type="radio" id="levodopa_therapie_mit_dopaminagonisten_effektiv_no" name="levodopa_therapie_mit_dopaminagonisten_effektiv" value="no">
-                        <label for="levodopa_therapie_mit_dopaminagonisten_effektiv_no">Nein</label>
-                    </form>
-                </div>
-            </div>
-    </div>
-
-    <div id="questionnaire_patient" style="margin-left: 900px">
-        <h1>Fragebogen Patient</h1>
-        <label> Diese Fragen können von der*dem Patient*in selbst ausgefüllt werden. Bei Fragen bitte an das medizinische Personal wenden.</label>
-        <div id="question_patient_1">
-            <h3 >Wie alt sind Sie?</h3>        
-            <input type="number" id="patient_alter" max="120" min="0" inputmode="numeric">
-        </div>
-
-        <div id="question_patient_2">
-            <h3>Wurde bei ihnen bereits Parkinson diagnostiziert</h3>        
-            <div>
-                <form id="pk_diagnose_vorhanden">
-                    <input type="radio" id="pk_diagnose_vorhanden_yes" name="pk_diagnose_vorhanden" value="yes">
-                    <label for="pk_diagnose_vorhanden_yes" style="margin-right:15px">Ja</label>
-                    <input type="radio" id="pk_diagnose_vorhanden_no" name="pk_diagnose_vorhanden" value="no">
-                    <label for="pk_diagnose_vorhanden_no">Nein</label>
+            <div id="question_patient_5">
+                <h3>Haben Sie aktuell Parkinson Symptome?</h3>        
+                <form id="parkinson_symptome_aktuell">
+                    <input type="radio" id="parkinson_symptome_aktuell_yes" name="parkinson_symptome_aktuell" value="yes">
+                    <label for="parkinson_symptome_aktuell_yes" style="margin-right:15px">Ja</label>
+                    <input type="radio" id="parkinson_symptome_aktuell_no" name="parkinson_symptome_aktuell" value="no">
+                    <label for="parkinson_symptome_aktuell_no">Nein</label>
                 </form>
             </div>
-        </div>
-
-        <div id="question_patient_3">
-            <h3>Hatten Sie in der Vergangenheit eine Parkinson-Therapie?</h3>        
-            <div>
-                <form id="pk_therapie_vergangenheit">
-                    <input type="radio" id="pk_therapie_vergangenheit_yes" name="pk_therapie_vergangenheit" value="yes">
-                    <label for="pk_therapie_vergangenheit_yes" style="margin-right:15px">Ja</label>
-                    <input type="radio" id="pk_therapie_vergangenheit_no" name="pk_therapie_vergangenheit" value="no">
-                    <label for="pk_therapie_vergangenheit_no">Nein</label>
+    
+            <div id="question_patient_6">
+                <h3>Wenn Sie aktuell eine Parkinson Therapie erhalten, um welche handelt es sich dabei? </h3>        
+                <form id="aktuelle_therapieform">
+                    <input type="radio" id="aktuelle_therapieform_no" name="aktuelle_therapieform" value="Keine">
+                    <label for="aktuelle_therapieform_no">Keine</label>
+                    <input type="radio" id="aktuelle_therapieform_medi" name="aktuelle_therapieform" value="Medikamentoes (Levodopa)">
+                    <label for="aktuelle_therapieform_medi">Medikamentös (Levodopa)</label>
+                    <input type="radio" id="aktuelle_therapieform_ths" name="aktuelle_therapieform" value="THS">
+                    <label for="aktuelle_therapieform_ths">THS</label>
                 </form>
             </div>
+    
+            <div id="question_patient_7">
+                <h3>Falls sie eine THS hatten, ist der Wechsel der Batterie länger als 3 Monate her?</h3>           
+                <form id="ths_batterie_aelter_drei_Monate">
+                    <input type="radio" id="ths_batterie_aelter_drei_Monate_yes" name="ths_batterie_aelter_drei_Monate" value="yes">
+                    <label for="ths_batterie_aelter_drei_Monate_yes" style="margin-right:15px">Ja</label>
+                    <input type="radio" id="ths_batterie_aelter_drei_Monate_no" name="ths_batterie_aelter_drei_Monate" value="no">
+                    <label for="ths_batterie_aelter_drei_Monate_no">Nein</label>
+                </form>
+            </div>
+    
+            <div id="question_patient_8">
+                <h3>Wissen sie ob die Batterie ausreichend geladen ist? </h3>
+                <form id="ths_batterie_geladen">         
+                    <input type="radio" id="ths_batterie_geladen_yes" name="ths_batterie_geladen" value="yes">
+                    <label for="ths_batterie_geladen_yes" style="margin-right:15px">Ja, sie ist geladen</label>
+                    <input type="radio" id="ths_batterie_geladen_no" name="ths_batterie_geladen" value="no">
+                    <label for="ths_batterie_geladen_no">Nein, sie ist nicht geladen / ich weis es nicht</label>
+                </form>
+            </div>
+    
+            <div id="question_patient_9">
+                <h3>Wie alt waren Sie, als bei Ihnen Parkinson diagnostiziert wurde?</h3>        
+                <input type="number" id="alter_bei_PK_diagnose" max="120" min="0" inputmode="numeric">
+            </div>
+    
+            <div id="question_patient_10">
+                <h3>Nehmen sie 5 oder mehr Levodopa medikamente pro Tag?</h3>     
+                <form id="5_medikamente_tag">   
+                    <input type="radio" id="5_medikamente_tag_yes" name="5_medikamente_tag" value="yes">
+                    <label for="5_medikamente_tag_yes" style="margin-right:15px">Ja</label>
+                    <input type="radio" id="5_medikamente_tag_no" name="5_medikamente_tag" value="no">
+                    <label for="5_medikamente_tag_no">Nein</label>
+                </form>
+            </div>
+    
+            <div id="question_patient_11">
+                <h3>Haben sie mehr eine 1 stunde störende Überbeweglichkeit pro tag?</h3>        
+                <form id="1stunde_ueberbeweglichkeit">
+                    <input type="radio" id="1stunde_ueberbeweglichkeit_yes" name="1stunde_ueberbeweglichkeit" value="yes">
+                    <label for="1stunde_ueberbeweglichkeit_yes" style="margin-right:15px">Ja</label>
+                    <input type="radio" id="1stunde_ueberbeweglichkeit_no" name="1stunde_ueberbeweglichkeit" value="no">
+                    <label for="1stunde_ueberbeweglichkeit_no">Nein</label>
+                </form>
+            </div>
+    
+            <div id="question_patient_12">
+                <h3>Wenn sie schonmal eine Parkinson Therapie erhalten haben, um welche handelte es sich?</h3>        
+                <form id="alte_therapieform">
+                    <input type="radio" id="alte_therapieform_no" name="alte_therapieform" value="Keine">
+                    <label for="alte_therapieform_no">Keine</label>
+                    <input type="radio" id="alte_therapieform_medi" name="alte_therapieform" value="Medikamentoes (Levodopa)">
+                    <label for="alte_therapieform_medi">Medikamentös (Levodopa)</label>
+                    <input type="radio" id="alte_therapieform_ths" name="alte_therapieform" value="THS">
+                    <label for="alte_therapieform_ths">THS</label>
+                </form>
+            </div>
+    
+            <div id="div_button_send" style="margin-top: 120px;">
+                <input type="button" id="button_send" value="Empfehlung anfordern">
+                <br>
+                <label id="button_status_text" style="color: darkred;"></label>
+            </div>
+            <div style="margin-top: 120px; font-size: larger;" id = "div_return_text">
+                <h4 id="return_text_header">Ergebniss:</h4>
+                <label id="return_text"></label>
+            </div>
         </div>
+        <div id="debug_wrapper" style="float:left;width: 20%;">
+            <div id="debug_div" style="width: fit-content">
+                <!-- wird durch code generiert -->
+                <label id="debug_label"></label>
+            </div>
+            <div id="tree_div" style="flex-wrap: wrap;width: fit-content">
+                <!-- wird durch code generiert -->
+            </div>
+        </div>        
+    </body>
+    
+    
+    <script src="./rules.js"></script>
+    <script src="./parkinson.js"></script>
+    <!-- für Testcases und Debug-Button auskommentieren-->
+    <!-- <script src="./testing/testcases.js"></script> --> 
 
-        <div id="question_patient_4">
-            <h3>Erhalten Sie aktuell eine Parkinson-Therapie?</h3>        
-            <form id="pk_therapie_aktuell">
-                <input type="radio" id="pk_therapie_aktuell_yes" name="pk_therapie_aktuell" value="yes">
-                <label for="pk_therapie_aktuell_yes" style="margin-right:15px">Ja</label>
-                <input type="radio" id="pk_therapie_aktuell_no" name="pk_therapie_aktuell" value="no">
-                <label for="pk_therapie_aktuell_no">Nein</label>
-            </form>
-        </div>
 
-        <div id="question_patient_5">
-            <h3>Haben Sie aktuell Parkinson Symptome?</h3>        
-            <form id="parkinson_symptome_aktuell">
-                <input type="radio" id="parkinson_symptome_aktuell_yes" name="parkinson_symptome_aktuell" value="yes">
-                <label for="parkinson_symptome_aktuell_yes" style="margin-right:15px">Ja</label>
-                <input type="radio" id="parkinson_symptome_aktuell_no" name="parkinson_symptome_aktuell" value="no">
-                <label for="parkinson_symptome_aktuell_no">Nein</label>
-            </form>
-        </div>
-
-        <div id="question_patient_6">
-            <h3>Wenn Sie aktuell eine Parkinson Therapie erhalten, um welche handelt es sich dabei? </h3>        
-            <form id="aktuelle_therapieform">
-                <input type="radio" id="aktuelle_therapieform_no" name="aktuelle_therapieform" value="Keine">
-                <label for="aktuelle_therapieform_no">Keine</label>
-                <input type="radio" id="aktuelle_therapieform_medi" name="aktuelle_therapieform" value="Medikamentoes (Levodopa)">
-                <label for="aktuelle_therapieform_medi">Medikamentös (Levodopa)</label>
-                <input type="radio" id="aktuelle_therapieform_ths" name="aktuelle_therapieform" value="THS">
-                <label for="aktuelle_therapieform_ths">THS</label>
-            </form>
-        </div>
-
-        <div id="question_patient_7">
-            <h3>Falls sie eine THS hatten, ist der Wechsel der Batterie länger als 3 Monate her?</h3>           
-            <form id="ths_batterie_aelter_drei_Monate">
-                <input type="radio" id="ths_batterie_aelter_drei_Monate_yes" name="ths_batterie_aelter_drei_Monate" value="yes">
-                <label for="ths_batterie_aelter_drei_Monate_yes" style="margin-right:15px">Ja</label>
-                <input type="radio" id="ths_batterie_aelter_drei_Monate_no" name="ths_batterie_aelter_drei_Monate" value="no">
-                <label for="ths_batterie_aelter_drei_Monate_no">Nein</label>
-            </form>
-        </div>
-
-        <div id="question_patient_8">
-            <h3>Wissen sie ob die Batterie ausreichend geladen ist? </h3>
-            <form id="ths_batterie_geladen">         
-                <input type="radio" id="ths_batterie_geladen_yes" name="ths_batterie_geladen" value="yes">
-                <label for="ths_batterie_geladen_yes" style="margin-right:15px">Ja, sie ist geladen</label>
-                <input type="radio" id="ths_batterie_geladen_no" name="ths_batterie_geladen" value="no">
-                <label for="ths_batterie_geladen_no">Nein, sie ist nicht geladen / ich weis es nicht</label>
-            </form>
-        </div>
-
-        <div id="question_patient_9">
-            <h3>Wie alt waren Sie, als bei Ihnen Parkinson diagnostiziert wurde?</h3>        
-            <input type="number" id="alter_bei_PK_diagnose" max="120" min="0" inputmode="numeric">
-        </div>
-
-        <div id="question_patient_10">
-            <h3>Nehmen sie 5 oder mehr Levodopa medikamente pro Tag?</h3>     
-            <form id="5_medikamente_tag">   
-                <input type="radio" id="5_medikamente_tag_yes" name="5_medikamente_tag" value="yes">
-                <label for="5_medikamente_tag_yes" style="margin-right:15px">Ja</label>
-                <input type="radio" id="5_medikamente_tag_no" name="5_medikamente_tag" value="no">
-                <label for="5_medikamente_tag_no">Nein</label>
-            </form>
-        </div>
-
-        <div id="question_patient_11">
-            <h3>Haben sie mehr eine 1 stunde störende Überbeweglichkeit pro tag?</h3>        
-            <form id="1stunde_ueberbeweglichkeit">
-                <input type="radio" id="1stunde_ueberbeweglichkeit_yes" name="1stunde_ueberbeweglichkeit" value="yes">
-                <label for="1stunde_ueberbeweglichkeit_yes" style="margin-right:15px">Ja</label>
-                <input type="radio" id="1stunde_ueberbeweglichkeit_no" name="1stunde_ueberbeweglichkeit" value="no">
-                <label for="1stunde_ueberbeweglichkeit_no">Nein</label>
-            </form>
-        </div>
-
-        <div id="question_patient_12">
-            <h3>Wenn sie schonmal eine Parkinson Therapie erhalten haben, um welche handelte es sich?</h3>        
-            <form id="alte_therapieform">
-                <input type="radio" id="alte_therapieform_no" name="alte_therapieform" value="Keine">
-                <label for="alte_therapieform_no">Keine</label>
-                <input type="radio" id="alte_therapieform_medi" name="alte_therapieform" value="Medikamentoes (Levodopa)">
-                <label for="alte_therapieform_medi">Medikamentös (Levodopa)</label>
-                <input type="radio" id="alte_therapieform_ths" name="alte_therapieform" value="THS">
-                <label for="alte_therapieform_ths">THS</label>
-            </form>
-        </div>
-
-        <div id="div_button_send" style="margin-top: 120px;">
-            <input type="button" id="button_send" value="Empfehlung anfordern">
-            <br>
-            <label id="button_status_text" style="color: darkred;"></label>
-        </div>
-        <div style="margin-top: 120px; font-size: larger;" id = "div_return_text">
-            <h4 id="return_text_header">Ergebniss:</h4>
-            <label id="return_text"></label>
-        </div>
-    </div>
-    <div id="debug_div">
-        <!-- wird durch code generiert -->
-        <label id="debug_label"></label>
-    </div>
-</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const labels = radio.parentElement.querySelectorAll('label');
+                    labels.forEach(label => {
+                        label.classList.remove('green', 'red');
+                    });
+                    const selectedLabel = radio.nextElementSibling;
+                    if (radio.value === 'yes') {
+                        selectedLabel.classList.add('green');
+                    } else if (radio.value === 'no') {
+                        selectedLabel.classList.add('red');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-
-
-<script src="./rules.js"></script>
-<script src="./parkinson.js"></script>
-<!-- für Testcases auskommentieren-->
-<!-- <script src="./testing/testcases.js"></script> 

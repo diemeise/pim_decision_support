@@ -37,7 +37,8 @@ const rules = [
   {
     "name": "Aktuelle Therapie ausreichend",
     "condition": "true === true",
-    "action": "finish=Die aktuelle Therapie ist ausreichend"
+    "action": "finish=Die aktuelle Therapie ist ausreichend",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Aktuelle Symptome ueberpruefen",
@@ -48,7 +49,8 @@ const rules = [
   {
     "name": "Aktuelle Symptome ueberpruefen 2",
     "condition": "questionnaire.wirkungsfluktationen_vorhanden === true",
-    "action": "goto=Welche Therapie ist moeglich"
+    "action": "goto=Welche Therapie ist moeglich",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Aktuelle Symptome ueberpruefen 3",
@@ -89,7 +91,8 @@ const rules = [
   {
     "name": "Risikobewertung gegen OP",
     "condition": "questionnaire.risiko_gegen_op === true",
-    "action": "goto=Keine OP moeglich"
+    "action": "goto=Keine OP moeglich",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Welche Therapie ist moeglich",
@@ -112,7 +115,8 @@ const rules = [
   {
     "name": "Welche Therapie ist moeglich 4",
     "condition": "questionnaire.THS_moeglich === true && questionnaire.pumpentherapie_moeglich === true",
-    "action": "goto=Empfehlung Pumpentherapie und THS"
+    "action": "goto=Empfehlung Pumpentherapie und THS",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Verbesserung durch Optimierung oraler Therapie",
@@ -130,7 +134,7 @@ const rules = [
     "name": "ueberpruefung auf fruehere PK-Therapie",
     "condition": "questionnaire.pk_therapie_vergangenheit === true",
     "action": "goto=Welche Therapie wurde durchgefuehrt 1",
-    "else": "goto=Welche Symptome haben Sie"
+    "else": "goto=Welche Symptome haben Sie?"
   },
   //tajs Regeln
   {
@@ -193,10 +197,7 @@ const rules = [
     "action": "goto=Spricht Risikobewertung gegen OP?",
     "else": "finish=Keine Empfehlung moeglich"
   },
-
-
-
-//nicht mehr taj
+  //nicht mehr taj
   {
     "name": "Welche Therapie wurde durchgefuehrt 1",
     "condition": "questionnaire.alte_therapieform === \"THS\"",
@@ -221,11 +222,6 @@ const rules = [
     "action": "goto=Empfehlung THS",
     "else": "goto=Keine Empfehlung moeglich"
   },
-
-
-
-
-
   //Mögliche Empfehlungen
   {
     "name": "Empfehlung THS",
@@ -265,16 +261,16 @@ const rules = [
   {
     "name": "Keine Empfehlung moeglich",
     "condition": "true === true",
-    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe moeglich"
+    "action": "finish=Empfehlung: Es ist unter den aktuellen Bedingungen keine Empfehlungsgabe möglich"
   },  
   {
     "name": "Schrittmacher ueberpruefen",
     "condition": "true === true",
-    "action": "finish=Empfehlung: Batterie des Schrittmachers ueberpruefen"
+    "action": "finish=Empfehlung: Batterie des Schrittmachers überprüfen"
   },
   {
     "name": "Ende Fehler",
     "condition": "true === true",
-    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte Eingaben ueberpruefen",
+    "action": "finish=Bei der Evaluation ist ein Fehler aufgetreten. Bitte überprüfen Sie ihre Eingaben",
   }
 ]
