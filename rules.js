@@ -37,7 +37,8 @@ const rules = [
   {
     "name": "Aktuelle Therapie ausreichend",
     "condition": "true === true",
-    "action": "finish=Die aktuelle Therapie ist ausreichend"
+    "action": "finish=Die aktuelle Therapie ist ausreichend",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Aktuelle Symptome ueberpruefen",
@@ -48,7 +49,8 @@ const rules = [
   {
     "name": "Aktuelle Symptome ueberpruefen 2",
     "condition": "questionnaire.wirkungsfluktationen_vorhanden === true",
-    "action": "goto=Welche Therapie ist moeglich"
+    "action": "goto=Welche Therapie ist moeglich",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Aktuelle Symptome ueberpruefen 3",
@@ -89,7 +91,8 @@ const rules = [
   {
     "name": "Risikobewertung gegen OP",
     "condition": "questionnaire.risiko_gegen_op === true",
-    "action": "goto=Keine OP moeglich"
+    "action": "goto=Keine OP moeglich",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Welche Therapie ist moeglich",
@@ -112,7 +115,8 @@ const rules = [
   {
     "name": "Welche Therapie ist moeglich 4",
     "condition": "questionnaire.THS_moeglich === true && questionnaire.pumpentherapie_moeglich === true",
-    "action": "goto=Empfehlung Pumpentherapie und THS"
+    "action": "goto=Empfehlung Pumpentherapie und THS",
+    "else": "goto=Ende Fehler"
   },
   {
     "name": "Verbesserung durch Optimierung oraler Therapie",
@@ -193,10 +197,7 @@ const rules = [
     "action": "goto=Spricht Risikobewertung gegen OP?",
     "else": "finish=Keine Empfehlung moeglich"
   },
-
-
-
-//nicht mehr taj
+  //nicht mehr taj
   {
     "name": "Welche Therapie wurde durchgefuehrt 1",
     "condition": "questionnaire.alte_therapieform === \"THS\"",
@@ -221,11 +222,6 @@ const rules = [
     "action": "goto=Empfehlung THS",
     "else": "goto=Keine Empfehlung moeglich"
   },
-
-
-
-
-
   //Mögliche Empfehlungen
   {
     "name": "Empfehlung THS",
