@@ -6,6 +6,8 @@ var questionnaire = {}
 function onEvaluate(){
     if(!checkInput()){
         buttonStatusLabel.innerHTML = "Der Algorithmus funktioniert nicht immer korrekt, wenn nicht alle Fragen beantwortet wurden.<br> Bitte überprüfen Sie ihre Eingaben.";
+    }else{
+        buttonStatusLabel.innerHTML = "";
     }
     //Algorithmus wird trotzdem ausgeführt, Warnung muss reichen
     calculateRecommendation();
